@@ -21,6 +21,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { Interceptor } from './@core/interceptor/interceptor.service';
 
 const configToast: any = {
   timeOut: 3000,
@@ -50,6 +51,13 @@ const configToast: any = {
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     ToastrModule.forRoot(configToast),
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
