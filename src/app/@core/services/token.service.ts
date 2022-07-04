@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import jwt_decode from "jwt-decode";
+
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -21,6 +23,7 @@ export class TokenService {
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
+
   }
 
   removeToken() {
