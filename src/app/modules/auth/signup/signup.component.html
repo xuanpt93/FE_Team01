@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <meta name="author" content="n" />
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="ScriptTop">
+        <div class="rt-container">
+            <div class="col-rt-4" id="float-right">
+
+                <!-- Ad Here -->
+
+            </div>
+
+        </div>
+    </div>
+
+    <header class="ScriptHeader">
+        <div class="rt-container">
+            <div class="col-rt-12">
+                <div class="rt-heading">
+                    <h1>Sign Up</h1>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="rt-container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+
+                <!-- Stylish Login Page Start -->
+                <form class="codehim-form">
+                    <div class="form-title">
+                        <div class="user-icon gr-bg">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <h2>Become our member</h2>
+                    </div>
+                    <form [formGroup]="formSignup">
+                        <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i> User name</label>
+                        <input type="text" id="email" class="cm-input" placeholder="Enter username"
+                            formControlName="userName">
+                        <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" class="cm-input" placeholder="Enter email"
+                            formControlName="email">
+                        <div class="form-contents">
+                            <div class="form-group-content">
+                                <label for="pass"><i class="fa fa-lock" id="passlabel"></i> Password</label>
+                                <input id="pass" type="password" class="cm-input" placeholder="Enter password"
+                                    formControlName="password">
+                            </div>
+                            <div class="form-group-content">
+                                <label for="pass"><i class="fa fa-lock" id="repasslabel"></i> Re-enter Password</label>
+                                <input id="repass" type="password" class="cm-input" placeholder="Re-enter password "
+                                    formControlName="newPassword">
+                            </div>
+                        </div>
+
+                        <div class="form-contents">
+                            <div class="form-group-content">
+                                <label for="pass"><i class="fa fa-lock" id="passlabel"></i> Phone</label>
+                                <input id="pass" type="Phone" class="cm-input" placeholder="+84..."
+                                    formControlName="phoneNumber">
+                            </div>
+                            <div class="form-group-content">
+                                <label for="pass"><i class="fa fa-lock" id="repasslabel"></i> Birthday</label>
+                                <input id="brithday" type="date" class="cm-input" data-date-format="DD-MMMM-YYYY"
+                                    formControlName="birthDay">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-login  gr-bg" (click)="signup()">Sign up</button>
+                        <!-- Stylish Login Page End -->
+                    </form>

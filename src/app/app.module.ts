@@ -22,6 +22,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { Interceptor } from './@core/interceptor/interceptor.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SendotpComponent } from './modules/auth/sendotp/sendotp.component';
+import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
+
 
 const configToast: any = {
   timeOut: 3000,
@@ -33,9 +37,10 @@ const configToast: any = {
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SendotpComponent, ResetpwComponent],
   imports: [
     BrowserModule,
+    FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,

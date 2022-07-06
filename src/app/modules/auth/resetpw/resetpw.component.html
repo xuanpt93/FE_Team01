@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <meta name="author" content="n" />
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+
+
+
+    <div class="form-title">
+        <div class="user-icon gr-bg">
+            <i class="fa fa-user"></i>
+        </div>
+        <h2>Reset password</h2>
+    </div>
+    <form [formGroup]="formReset">
+        <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i>New password</label>
+        <input type="password" id="password" class="cm-input" placeholder="Enter New password"
+            formControlName="newpass">
+        <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i> Re-type new
+            password</label>
+        <input type="password" id="password" class="cm-input" placeholder="Enter New password">
+
+        <label for="pass"><i class="fa fa-lock" id="repasslabel"></i> OTP</label>
+        <input id="otp" type="text" class="cm-input" formControlName="otp">
+        <button type="submit" class="btn-login  gr-bg" (click)="reset()">Reset</button>
+    </form>

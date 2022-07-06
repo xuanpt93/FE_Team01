@@ -5,18 +5,32 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Interceptor } from '../../@core/interceptor/interceptor.service';
+import { SignupComponent } from './signup/signup.component';
+import { SendotpComponent } from './sendotp/sendotp.component';
 
 const routes: Routes = [{
   path: '',
   component: AuthComponent,
-  children: [],
+  children: [
+    // {
+    //   path: "signup",
+    //   component: SignupComponent
+
+
+    // },
+    // {
+    //   path: "sendotp",
+    //   component: SendotpComponent
+
+
+    // }
+
+  ],
 }];
 
 @NgModule({
   declarations: [
-    AuthComponent,
+    AuthComponent, SignupComponent
   ],
   imports: [
     CommonModule,
