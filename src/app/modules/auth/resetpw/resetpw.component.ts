@@ -30,5 +30,13 @@ export class ResetpwComponent implements OnInit {
       this.router.navigate(['/auth']);
     }
   }
+  // isEmail(search: string) : boolean{
+  //   var serchfind:boolean;
+  //   regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  //   serchfind = regexp.test(search);
+  //   return serchfind;
+
+  // }
+
 
 }

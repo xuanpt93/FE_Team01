@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../@core/services/auth.service';
 
@@ -19,7 +21,7 @@ export class SendotpComponent implements OnInit {
 
   initForm() {
     this.formSendotp = this.fb.group({
-      email: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -31,5 +33,12 @@ export class SendotpComponent implements OnInit {
       this.router.navigate(['/resetpw']);
     }
   }
-
+  onSubmit(){
+    // console.log(this.formSendotp.value);
+  }
+  
+  get f(){
+    return this.formSendotp.controls
+    
+  }
 }
