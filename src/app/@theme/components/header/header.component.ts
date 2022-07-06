@@ -17,11 +17,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
-  picture='iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAG1BMVEVEeef///+4zPaKq/ChvPPn7' +
-  'vxymu3Q3flbieqI1HvuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQUlEQVQ4jWNgGAWjgP6ASdncAEaiAhaGiACmFhCJLsMaIiDAEQEi0WXYEiMC' +
-  'OCJAJIY9KuYGTC0gknpuHwXDGwAA5fsIZw0iYWYAAAAASUVORK5CYII=';
+  picture = 'iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAG1BMVEVEeef///+4zPaKq/ChvPPn7' +
+    'vxymu3Q3flbieqI1HvuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQUlEQVQ4jWNgGAWjgP6ASdncAEaiAhaGiACmFhCJLsMaIiDAEQEi0WXYEiMC' +
+    'OCJAJIY9KuYGTC0gknpuHwXDGwAA5fsIZw0iYWYAAAAASUVORK5CYII=';
 
-  name=this.sessionService.getItem('auth-user')
+  name = this.sessionService.getItem('auth-user')
 
   themes = [
     {
@@ -44,16 +44,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Thông tin cá nhân' }, { title: 'Đăng xuất'   } ];
+  userMenu = [{ title: 'Thông tin cá nhân' }, { title: 'Đăng xuất' }];
 
   constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private themeService: NbThemeService,
-              private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService,
-              private sessionService: SessionService,
-              private router: Router,
-              ) {
+    private menuService: NbMenuService,
+    private themeService: NbThemeService,
+    private layoutService: LayoutService,
+    private breakpointService: NbMediaBreakpointsService,
+    private sessionService: SessionService,
+    private router: Router,
+  ) {
   }
 
   ngOnInit() {
@@ -61,13 +61,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.user = this.sessionService.getItem('auth-user');
 
-    this.menuService.onItemClick().subscribe((event)=>{
-      if(event.item.title==='Log out'){
+    this.menuService.onItemClick().subscribe((event) => {
+      if (event.item.title === 'Đăng xuất') {
         this.sessionService.removeItem('auth-token'),
-        this.sessionService.removeItem('auth-user'),
-        this.router.navigate(['/auth/'])
+          this.sessionService.removeItem('auth-user'),
+          this.router.navigate(['/auth/'])
       }
-      if(event.item.title==='Profile'){
+      if (event.item.title === 'Profile') {
         this.router.navigate(['/home/profile'])
       }
     });

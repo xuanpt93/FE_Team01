@@ -2,6 +2,9 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './@core/guards/auth.guard';
+import { SignupComponent } from './modules/auth/signup/signup.component';
+import { SendotpComponent } from './modules/auth/sendotp/sendotp.component';
+import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
 
 export const routes: Routes = [
   {
@@ -13,11 +16,26 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
-  { path: '',
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
+  {
+    path: 'sendotp',
+    component: SendotpComponent,
+  },
+  {
+    path: 'resetpw',
+    component: ResetpwComponent,
+  }
+  ,
+  {
+    path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  { path: '**',
+  {
+    path: '**',
     redirectTo: 'home',
   },
 ];

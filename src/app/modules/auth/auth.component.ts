@@ -55,10 +55,17 @@ export class AuthComponent implements OnInit {
 
           this.tokenService.saveToken(data.jwt);
           this.tokenService.saveUser(data.user);
-          // this.roles = this.tokenService.getUser().roles;
-          this.router.navigate(['/home/']);
-        }
-      );
+          if (localStorage.getItem('token') != null) {
+            const tokenInfo = localStorage.getItem('token');
+            const roleFromToken = tokenInfo.split(":")[2].split(",")[0].replace('"', '').replace('"', '');
+            console.log(roleFromToken);
+            if (roleFromToken === "ROLE_ADMIN") {
+              this.router.navigate(['/home/']);
+            } else {
+              this.router.navigate(['/signup']);
+            }
+          }
+        });
     }
   }
 

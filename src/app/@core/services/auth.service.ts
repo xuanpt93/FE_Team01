@@ -16,6 +16,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
+
   private readonly baseUrl = `${environment.apiUrl}auth/`;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -23,4 +24,17 @@ export class AuthService {
   public login(form: any): Observable<any> {
     return this.http.post(`${this.baseUrl}login`, form);
   }
+
+  public signup(form: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}signup`, form);
+  }
+
+  public sendotp(form: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}opt-generaing` + "?email=" + form.email, null);
+  }
+
+  public resetpw(form: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}newPass-setting` + "?newpass=" + form.newpass + "&" + "opt=" + form.otp, null);
+  }
+
 }

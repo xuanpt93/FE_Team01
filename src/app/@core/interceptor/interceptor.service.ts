@@ -1,22 +1,41 @@
-import { Injectable, Injector } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/observable/throw'
-import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs';
-@Injectable()
+import { Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpInterceptor, HttpResponse } from '@angular/common/http';
+import { HttpRequest } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { HttpHandler } from '@angular/common/http';
+import { HttpEvent } from '@angular/common/http';
+import { TokenService } from '../services/token.service';
+import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+@Injectable({
+  providedIn: 'root'
+})
 export class Interceptor implements HttpInterceptor {
-  constructor() { }
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  token: string;
+  constructor(private tokenser: TokenService, private router: Router) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (localStorage.getItem('token') != null) {
-      const token = localStorage.getItem('token');
-      console.log(token)
-      // if the token is  stored in localstorage add it to http header
-      const headers = new HttpHeaders().set("access-token", token);
-      //clone http to the custom AuthRequest and send it to the server 
-      const AuthRequest = request.clone({ headers: headers });
-      return next.handle(AuthRequest)
-    } else {
-      return next.handle(request);
+      const tokenInfo = localStorage.getItem('token');
+
+      const roleFromToken = tokenInfo.split(":");
+      const tokenizedReq = req.clone({ headers: req.headers.set('Authorization', roleFromToken[2].split(",")[0]) });
+      return next.handle(tokenizedReq).pipe(
+        map((event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            console.log('event--->>>', event);
+          }
+          return event;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          if (error['status'] === 403) {
+            this.tokenser.removeToken();
+            this.router.navigate(['/auth/']);
+          }
+          return throwError(error);
+        }),
+      );;
     }
+    return next.handle(req);
   }
 }
