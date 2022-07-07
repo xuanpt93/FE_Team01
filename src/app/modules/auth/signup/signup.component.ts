@@ -56,17 +56,17 @@ export class SignupComponent implements OnInit {
       this.authService.signup(this.formSignup.value).subscribe(
 
         Response => {
-          if (Response.status === 200) {
-            alert("Signup successful!");
+          if (Response.httpStatus === "OK") {
+            alert("Đăng kí tài khoản thành công!");
             this.router.navigate(['/auth']);
           }
         }, error => {
-          if (error.error.message === "Username existed") {
-            this.messages = "Username existed";
-          } else if (error.error.message === "Email existed") {
-            this.messages = "Email existed";
-          } else if (error.error.message === "Phone existed") {
-            this.messages = "Phone existed";
+          if (error.error.message === "Username đã tồn tại") {
+            this.messages = "Username đã tồn tại";
+          } else if (error.error.message === "Email đã tồn tại") {
+            this.messages = "Email đã tồn tại";
+          } else if (error.error.message === "Phone đã tồn tại") {
+            this.messages = "Phone đã tồn tại";
           }
         });
     }

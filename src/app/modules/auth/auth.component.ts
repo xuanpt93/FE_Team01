@@ -74,8 +74,8 @@ export class AuthComponent implements OnInit {
 
           } else if (Response.error.message === "Incorrect password") {
             this.messages = "Incorrect password";
-          } else {
-
+          } else if (Response.error.message === "Tài khoản chưa active") {
+            alert("Tài khoản chưa được active");
           }
         });
       ;
