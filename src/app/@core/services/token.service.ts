@@ -15,13 +15,15 @@ export class TokenService {
   }
 
   getToken() {
-    const token = window.sessionStorage.getItem(TOKEN_KEY);
+    const token = window.localStorage.getItem(TOKEN_KEY);
     return token;
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.localStorage.removeItem(TOKEN_KEY);
+    window.localStorage.setItem(TOKEN_KEY, token);
+    // window.sessionStorage.removeItem(TOKEN_KEY);
+    // window.sessionStorage.setItem(TOKEN_KEY, token);
 
   }
 
