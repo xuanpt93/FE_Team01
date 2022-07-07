@@ -26,9 +26,14 @@ export class SendotpComponent implements OnInit {
   send() {
     this.isSubmitted = true;
     if (this.formSendotp.valid) {
-      this.authService.sendotp(this.formSendotp.value).subscribe();
-      alert("send otp successful!");
-      this.router.navigate(['/resetpw']);
+      this.authService.sendotp(this.formSendotp.value).subscribe(
+        response => {
+          alert("Signup successful!");
+          this.router.navigate(['/resetpw']);
+        },
+        error => {
+          alert("Can not find account! from this email address!");
+        });
     }
   }
 

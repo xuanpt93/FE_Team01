@@ -1,5 +1,8 @@
 <form [formGroup]="formSendotp">
     <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i> Email</label>
     <input type="text" id="email" class="cm-input" placeholder="Enter email" formControlName="email">
-    <button type="submit" class="btn-login  gr-bg" (click)="send()">Send</button>
+
+    <button type="submit" class="btn-login  gr-bg" (click)="send()" [disabled]="!formSendotp.valid">Send</button>
+
+    <!-- <button type="submit" class="btn-login  gr-bg" (click)="send()" disabled="!formSendotp.valid">Send</button> -->
 </form>
