@@ -35,7 +35,7 @@ export class AuthComponent implements OnInit {
   initForm() {
     this.formLogin = this.fb.group({
       userName: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,16}$')]]
     });
   }
 
