@@ -57,8 +57,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/auth']);
         },
         error => {
-          // You can access status:
-          console.log(error.status);
+          alert("Signup failed! Duplicate ");
         });
     }
   }
