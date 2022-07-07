@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ok } from 'assert';
+import { error } from 'console';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../@core/services/auth.service';
 
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   formSignup: FormGroup;
   isSubmitted = false;
   isSaving = false;
+  public messages = '';
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       newPassword: ['', [Validators.required]],
       birthDay: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}')]],
       fullName: "xuan",
       name: "pahm"
       // userName: "xuan",
@@ -52,12 +54,20 @@ export class SignupComponent implements OnInit {
     this.isSubmitted = true;
     if (this.formSignup.valid) {
       this.authService.signup(this.formSignup.value).subscribe(
-        response => {
-          alert("Signup successful!");
-          this.router.navigate(['/auth']);
-        },
-        error => {
-          alert("Signup failed! Duplicate ");
+
+        Response => {
+          if (Response.status === 200) {
+            alert("Signup successful!");
+            this.router.navigate(['/auth']);
+          }
+        }, error => {
+          if (error.error.message === "Username existed") {
+            this.messages = "Username existed";
+          } else if (error.error.message === "Email existed") {
+            this.messages = "Email existed";
+          } else if (error.error.message === "Phone existed") {
+            this.messages = "Phone existed";
+          }
         });
     }
   }
