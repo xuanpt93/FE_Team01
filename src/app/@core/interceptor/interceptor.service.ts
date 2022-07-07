@@ -19,7 +19,7 @@ export class Interceptor implements HttpInterceptor {
       const tokenInfo = localStorage.getItem('token');
 
       const roleFromToken = tokenInfo.split(":");
-      const tokenizedReq = req.clone({ headers: req.headers.set('Authorization', "Bearer " + sessionStorage.getItem('auth-token')) });
+      const tokenizedReq = req.clone({ headers: req.headers.set('Authorization', "Bearer " + localStorage.getItem('auth-token')) });
       return next.handle(tokenizedReq).pipe(
         map((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {

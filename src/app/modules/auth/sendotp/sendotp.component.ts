@@ -13,6 +13,7 @@ import { AuthService } from '../../../@core/services/auth.service';
 export class SendotpComponent implements OnInit {
   formSendotp: FormGroup;
   isSubmitted = false;
+  public messages = "";
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,20 +31,25 @@ export class SendotpComponent implements OnInit {
     if (this.formSendotp.valid) {
       this.authService.sendotp(this.formSendotp.value).subscribe(
         response => {
-          alert("Signup successful!");
-          this.router.navigate(['/resetpw']);
+          if (response.status === 200) {
+            alert("Signup successful!");
+            this.router.navigate(['/resetpw']);
+          }
         },
         error => {
-          alert("Can not find account! from this email address!");
+          if (error.error.message === "Email không tồn tại") {
+            console.log(error.error.message);
+            this.messages = "Email không tồn tại";
+          }
         });
     }
   }
-  onSubmit(){
+  onSubmit() {
     // console.log(this.formSendotp.value);
   }
-  
-  get f(){
+
+  get f() {
     return this.formSendotp.controls
-    
+
   }
 }

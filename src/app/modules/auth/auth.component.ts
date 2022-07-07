@@ -17,6 +17,7 @@ export class AuthComponent implements OnInit {
   roles: string[] = [];
   isLoggedIn = false;
 
+  public messages = "";
   constructor(private fb: FormBuilder,
     private authService: AuthService,
     private tokenService: TokenService,
@@ -49,6 +50,7 @@ export class AuthComponent implements OnInit {
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
         data => {
+          console.log(data);
           this.isLoggedIn = true;
           const decodeTokenStr = JSON.stringify(jwt_decode(data.jwt));
           localStorage.setItem('token', decodeTokenStr);
@@ -65,7 +67,18 @@ export class AuthComponent implements OnInit {
               this.router.navigate(['/signup']);
             }
           }
+        }, Response => {
+
+          if (Response.error.message === "Incorrect username") {
+            this.messages = "Incorrect username";
+
+          } else if (Response.error.message === "Incorrect password") {
+            this.messages = "Incorrect password";
+          } else {
+
+          }
         });
+      ;
     }
   }
 

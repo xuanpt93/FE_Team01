@@ -10,6 +10,7 @@ import { AuthService } from '../../../@core/services/auth.service';
 })
 export class ResetpwComponent implements OnInit {
   formReset: FormGroup;
+  public messages = '';
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -18,23 +19,28 @@ export class ResetpwComponent implements OnInit {
 
   initForm() {
     this.formReset = this.fb.group({
-      newpass: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]],
+      repassword: ['', Validators.required],
       otp: ['', Validators.required]
     });
   }
-get f(){
-  return this.formReset.value;
-}
+  get f() {
+    return this.formReset.controls;
+  }
   reset() {
     if (this.formReset.valid) {
       this.authService.resetpw(this.formReset.value).subscribe(
 
         response => {
-          alert("reset password successful!");
-          this.router.navigate(['/auth']);
+          if (response.status === 200) {
+            alert("reset password successful!");
+            this.router.navigate(['/auth']);
+          }
         },
         error => {
-          alert("Invalid OTP! Please, re-type!");
+          if (error.error.message === "Otp không đúng hoặc hết hạn!") {
+            this.messages = 'Otp không đúng hoặc hết hạn!';
+          }
         });
     }
   }
