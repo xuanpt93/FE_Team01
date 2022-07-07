@@ -62,16 +62,11 @@ body {
 }
 
 /* Gradient Background */
-.gr-bg {
-    background: #e2ab29;
-
-
-}
 
 
 /* Login Button Design */
 
-.btn-login {
+#singupbutton {
     display: block;
     width: 100%;
     padding: 10px;
@@ -79,14 +74,15 @@ body {
     color: #fff;
     border-radius: 20px;
     cursor: pointer;
+    background: #007bff;
 
 }
 
-.btn-login:focus {
+.singupbutton:focus {
     outline: 0;
 }
 
-.btn-login:hover {
+.singupbutton:hover {
     opacity: 0.8;
     transition: .3s;
 }
@@ -406,6 +402,11 @@ h2 span {
     margin-top: 7px;
 
 }
+
+// .btn-warning {
+//     position: relative;
+
+// }
 
 .footer-form div a {
     color: #414141;

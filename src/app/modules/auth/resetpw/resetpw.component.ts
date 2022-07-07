@@ -27,9 +27,15 @@ get f(){
 }
   reset() {
     if (this.formReset.valid) {
-      this.authService.resetpw(this.formReset.value).subscribe();
-      alert("reset password successful!");
-      this.router.navigate(['/auth']);
+      this.authService.resetpw(this.formReset.value).subscribe(
+
+        response => {
+          alert("reset password successful!");
+          this.router.navigate(['/auth']);
+        },
+        error => {
+          alert("Invalid OTP! Please, re-type!");
+        });
     }
   }
   // isEmail(search: string) : boolean{

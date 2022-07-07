@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean |
       UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (sessionStorage.getItem('auth-token')) {
+    if (sessionStorage.getItem('auth-token') && localStorage.getItem('token').split(":")[2].split(",")[0].replace('"', '').replace('"', '') === "ROLE_ADMIN") {
       // logged in so return true
       return true;
     }
