@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
 
     if (localStorage.getItem('auth-token')) {
 
-    if (sessionStorage.getItem('auth-token') && localStorage.getItem('token').split(":")[2].split(",")[0].replace('"', '').replace('"', '') === "ROLE_ADMIN") {
+    if (localStorage.getItem('auth-token') && localStorage.getItem('token').split(":")[2].split(",")[0].replace('"', '').replace('"', '') === "ROLE_ADMIN") {
 
       // logged in so return true
       return true;
@@ -26,4 +26,5 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 
+}
 }
