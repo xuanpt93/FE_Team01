@@ -22,7 +22,9 @@ export class ResetpwComponent implements OnInit {
       otp: ['', Validators.required]
     });
   }
-
+get f(){
+  return this.formReset.value;
+}
   reset() {
     if (this.formReset.valid) {
       this.authService.resetpw(this.formReset.value).subscribe();

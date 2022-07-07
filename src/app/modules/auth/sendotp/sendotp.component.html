@@ -1,37 +1,26 @@
-<form [formGroup]="formSendotp  ">
-    <div class="form-group">
-        <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i> Email</label>
-        <input type="email" id="email" class="cm-input" placeholder="Enter email" formControlName="email">
-        <div *ngIf=" f.email.invalid && (f.email.dirty || f.email.touched)">
-            <!-- <div *ngIf="f.password.errors"> -->
-            <div *ngIf="f.email.errors.required">
-                <small class="text-danger">*Emtpy fields</small>
-            </div>
-            <div *ngIf="f.email.errors.email">
-                <small class="text-danger">*Invalid format</small>
-            </div>
-            <!-- </div> -->
-        </div>
-    </div>
+<div class="justify-content-center d-flex " style=" margin-top: 5%;padding: 5px;">
+
+  <div class="col-4 justify-content-center div-form-fw">
     
-    <button type="submit"  [disabled] = "!formSendotp.valid" (click)="send()">Send</button>
-</form>
-<div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <h2 class="m-2">Tìm tài khoản của bạn</h2>
+    <form [formGroup]="formSendotp " class="mt-5 mb-5" style="with:100%">
+      <h2>	
+        Vui lòng nhập email để tìm kiếm tài khoản của bạn.</h2>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Nhập email tài khoản" formControlName="email">
+      </div>
+      <div *ngIf=" f.email.invalid && (f.email.dirty || f.email.touched)">
+        <div *ngIf="f.email.errors.required">
+          <small class="text-danger">Trường thông tin không được để trống</small>
         </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div *ngIf="f.email.errors.email">
+          <small class="text-danger">Email không đúng định dạng</small>
         </div>
       </div>
-    </div>
+     <div class="btn-fw">
+      <button class="btn btn-primary " type="submit" [disabled]="!formSendotp.valid" (click)="send()">Send</button>
+     </div>
+    </form>
+  
   </div>
+</div>
