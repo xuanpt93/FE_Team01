@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { FormControl } from '@angular/forms';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../@core/services/auth.service';
 
@@ -19,17 +21,29 @@ export class SendotpComponent implements OnInit {
 
   initForm() {
     this.formSendotp = this.fb.group({
-      email: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
   send() {
     this.isSubmitted = true;
     if (this.formSendotp.valid) {
-      this.authService.sendotp(this.formSendotp.value).subscribe();
-      alert("send otp successful!");
-      this.router.navigate(['/resetpw']);
+      this.authService.sendotp(this.formSendotp.value).subscribe(
+        response => {
+          alert("Signup successful!");
+          this.router.navigate(['/resetpw']);
+        },
+        error => {
+          alert("Can not find account! from this email address!");
+        });
     }
   }
-
+  onSubmit(){
+    // console.log(this.formSendotp.value);
+  }
+  
+  get f(){
+    return this.formSendotp.controls
+    
+  }
 }
