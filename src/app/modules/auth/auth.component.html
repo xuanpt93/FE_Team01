@@ -51,6 +51,9 @@
                             <div *ngIf="f.password.errors.required">
                                 <small class="text-danger">Mật khẩu không được để trống</small>
                             </div>
+                            <div *ngIf="f.password.errors.pattern">
+                                <small class="text-danger">Mật khẩu sai định dạng</small>
+                            </div>
                         </div>
 
                         <mat-error *ngIf="messages === 'Incorrect password'" class="alert-danger">{{
@@ -59,24 +62,15 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
-                        <!-- Checkbox -->
-                        <!-- <div class="form-check mb-0">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                            <label class="form-check-label" for="form2Example3">
-                                Ghi nhớ tài khoản
-                            </label>
-                        </div> -->
                         <a [routerLink]="['/sendotp']" routerLinkActive="router-link-active" class="text-body">Lấy lại
                             mật khẩu?</a>
                     </div>
-
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <button pButton type="button" label="Đăng nhập" [disabled]="!formLogin.valid"
                             (click)="onSubmit()"></button>
                         <p class="small fw-bold mt-2 pt-1 mb-0">Đăng ký tài khoản ? <a [routerLink]="['/signup']"
                                 routerLinkActive="router-link-active" class="link-danger">ITSOL</a></p>
                     </div>
-
                 </form>
             </div>
         </div>
