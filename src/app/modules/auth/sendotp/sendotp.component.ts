@@ -30,9 +30,9 @@ export class SendotpComponent implements OnInit {
     this.isSubmitted = true;
     if (this.formSendotp.valid) {
       this.authService.sendotp(this.formSendotp.value).subscribe(
-        response => {
-          if (response.status === 200) {
-            alert("Signup successful!");
+        Response => {
+          if (Response.httpStatus === "OK") {
+            alert("GỬi mã OTP thành công!");
             this.router.navigate(['/resetpw']);
           }
         },

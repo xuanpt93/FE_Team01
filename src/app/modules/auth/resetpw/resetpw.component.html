@@ -38,10 +38,10 @@
         <div *ngIf=" f.password.invalid && (f.password.dirty || f.password.touched)">
           <!-- <div *ngIf="f.password.errors"> -->
           <div *ngIf="f.password.errors.required">
-            <small class="text-danger">*Emtpy fields</small>
+            <small class="text-danger">*Không được bỏ trống</small>
           </div>
           <div *ngIf="f.password.errors.pattern">
-            <small class="text-danger">*Invalid format</small>
+            <small class="text-danger">*Mật khẩu sai định dạng</small>
           </div>
 
           <!-- </div> -->
@@ -50,18 +50,18 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Nhập mật khẩu mới</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+          <input type="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
             formControlName="password">
         </div>
         <div class="display-block"
           *ngIf="!(f.password.value===f.repassword.value) || !(f.password.value !== null && f.repassword.value !== null) ">
-          <small class="text-danger">*Password does not match.</small>
+          <small class="text-danger">*Mật khẩu không khớp</small>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span style="width: 164px;" class="input-group-text" id="inputGroup-sizing-default">Nhập lại mật khẩu</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+          <input type="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
             formControlName="repassword">
 
         </div>
@@ -70,7 +70,7 @@
         <div *ngIf=" f.otp.invalid && (f.otp.dirty || f.otp.touched)">
           <!-- <div *ngIf="f.password.errors"> -->
           <div *ngIf="f.otp.errors.required">
-            <small class="text-danger">*Empty field</small>
+            <small class="text-danger">*Không được bỏ trống</small>
           </div>
         </div>
         <div class="input-group mb-3">
@@ -81,7 +81,10 @@
           <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
             formControlName="otp">
         </div>
-        <div *ngIf="messages === 'Otp không đúng hoặc hết hạn!'">
+        <div *ngIf="messages === 'Otp không đúng!'">
+          <small class="text-danger">*{{messages}}</small>
+        </div>
+        <div *ngIf="messages === 'Otp này đã hết hạn!'">
           <small class="text-danger">*{{messages}}</small>
         </div>
         <!-- <input id="otp" type="text" class="cm-input" formControlName="otp"> -->

@@ -50,9 +50,9 @@
             <label for="email" id="incorrect-user"><i class="fa fa-envelope"></i> User name</label>
             <input type="text" id="email" class="cm-input" placeholder="Enter username" formControlName="userName">
             <div *ngIf="f.userName.errors">
-                <div *ngIf="f.userName.errors.required"><small class="text-danger">*Emty fields</small></div>
+                <div *ngIf="f.userName.errors.required"><small class="text-danger">*Không được bỏ trống</small></div>
             </div>
-            <div *ngIf="messages === 'Username existed'">
+            <div *ngIf="messages === 'Username đã tồn tại'">
                 <small class="text-danger">*{{messages}}</small>
             </div>
 
@@ -62,14 +62,14 @@
                 <div *ngIf=" f.email.invalid && (f.email.dirty || f.email.touched)">
                     <div *ngIf="f.email.errors">
                         <div *ngIf="f.email.errors.required">
-                            <small class="text-danger">*Emtpy field</small>
+                            <small class="text-danger">*Không được bỏ trống</small>
                         </div>
                         <div *ngIf="f.email.errors.email">
-                            <small class="text-danger">*Invalid format</small>
+                            <small class="text-danger">*Sai định dạng</small>
                         </div>
                     </div>
                 </div>
-                <div *ngIf="messages === 'Email existed'">
+                <div *ngIf="messages === 'Email đã tồn tại'">
                     <small class="text-danger">*{{messages}}</small>
                 </div>
             </div>
@@ -82,16 +82,16 @@
                     <div *ngIf=" f.password.invalid && (f.password.dirty || f.password.touched)">
                         <!-- <div *ngIf="f.password.errors"> -->
                         <div *ngIf="f.password.errors.required">
-                            <small class="text-danger">*Emtpy fields</small>
+                            <small class="text-danger">*Không được bỏ trống</small>
                         </div>
                         <div *ngIf="f.password.errors.pattern">
-                            <small class="text-danger">*Invalid format</small>
+                            <small class="text-danger">*Sai định dạng</small>
                         </div>
                         <!-- </div> -->
                     </div>
                     <div class="display-block"
                         *ngIf="!(f.password.value===f.newPassword.value) || !(f.password.value !== null && f.newPassword.value !== null) ">
-                        <small class="text-danger">*Password does not match.</small>
+                        <small class="text-danger">*Mật khẩu không khớp</small>
                     </div>
                 </div>
                 <div class="form-group-content">
@@ -108,14 +108,14 @@
                     <div *ngIf=" f.phoneNumber.invalid && (f.phoneNumber.dirty || f.phoneNumber.touched)">
 
                         <div *ngIf="f.phoneNumber.errors.required">
-                            <small class="text-danger">*Emtpy fields</small>
+                            <small class="text-danger">*Không được bỏ trống</small>
                         </div>
                         <div *ngIf="f.phoneNumber.errors.pattern">
-                            <small class="text-danger">*Invalid format</small>
+                            <small class="text-danger">*Sai định dạng số điện thoại</small>
                         </div>
 
                     </div>
-                    <div *ngIf="messages === 'Phone existed'">
+                    <div *ngIf="messages === 'Phone đã tồn tại'">
                         <small class="text-danger">*{{messages}}</small>
                     </div>
                 </div>

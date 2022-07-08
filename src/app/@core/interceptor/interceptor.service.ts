@@ -17,9 +17,7 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (localStorage.getItem('token') != null) {
       const tokenInfo = localStorage.getItem('token');
-
-      const roleFromToken = tokenInfo.split(":");
-      const tokenizedReq = req.clone({ headers: req.headers.set('Authorization', "Bearer " + localStorage.getItem('auth-token')) });
+      const tokenizedReq = req.clone({ headers: req.headers.set('Authorization', tokenInfo) });
       return next.handle(tokenizedReq).pipe(
         map((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {

@@ -31,15 +31,17 @@ export class ResetpwComponent implements OnInit {
     if (this.formReset.valid) {
       this.authService.resetpw(this.formReset.value).subscribe(
 
-        response => {
-          if (response.status === 200) {
-            alert("reset password successful!");
+        Response => {
+          if (Response === "OK") {
+            alert("Đặt lại mật khẩu thành công!");
             this.router.navigate(['/auth']);
           }
         },
         error => {
-          if (error.error.message === "Otp không đúng hoặc hết hạn!") {
-            this.messages = 'Otp không đúng hoặc hết hạn!';
+          if (error.error.message === "Otp không đúng!") {
+            this.messages = 'Otp không đúng!';
+          } else if (error.error.message === "Otp này đã hết hạn!") {
+            this.messages = "Otp này đã hết hạn!"
           }
         });
     }
