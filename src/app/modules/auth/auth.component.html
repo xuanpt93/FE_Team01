@@ -36,7 +36,7 @@
                                 <small class="text-danger">Tài khoản không được để trống</small>
                             </div>
                         </div>
-                        <mat-error *ngIf="messages === 'Incorrect username'" class="alert-danger">{{
+                        <mat-error *ngIf="messages === 'Tài khoản không tồn tại'" class="alert-danger">{{
                             messages
                             }}</mat-error>
                     </div>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <mat-error *ngIf="messages === 'Incorrect password'" class="alert-danger">{{
+                        <mat-error *ngIf="messages === 'Sai thông tin mật khẩu'" class="alert-danger mt-2">{{
                             messages
                             }}</mat-error>
                     </div>

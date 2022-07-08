@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { SignupComponent } from './signup/signup.component';
 import { SendotpComponent } from './sendotp/sendotp.component';
+import { TranstolinkComponent } from './transtolink/transtolink.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,7 +31,7 @@ const routes: Routes = [{
 
 @NgModule({
   declarations: [
-    AuthComponent, SignupComponent
+    AuthComponent, SignupComponent, TranstolinkComponent
   ],
   imports: [
     CommonModule,
