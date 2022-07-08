@@ -58,6 +58,7 @@ export class SignupComponent implements OnInit {
         Response => {
           if (Response.httpStatus === "OK") {
             alert("Đăng kí tài khoản thành công!");
+            localStorage.setItem("activeID", Response.obj.id);
             this.router.navigate(['/auth']);
           }
         }, error => {

@@ -69,11 +69,11 @@ export class AuthComponent implements OnInit {
           }
         }, Response => {
 
-          if (Response.error.message === "Incorrect username") {
-            this.messages = "Incorrect username";
+          if (Response.error.message === "Tài khoản không tồn tại") {
+            this.messages = "Tài khoản không tồn tại";
 
-          } else if (Response.error.message === "Incorrect password") {
-            this.messages = "Incorrect password";
+          } else if (Response.error.message === "Sai thông tin mật khẩu") {
+            this.messages = "Sai thông tin mật khẩu";
           } else if (Response.error.message === "Tài khoản chưa active") {
             alert("Tài khoản chưa được active");
           }
