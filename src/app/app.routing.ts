@@ -5,6 +5,7 @@ import { AuthGuard } from './@core/guards/auth.guard';
 import { SignupComponent } from './modules/auth/signup/signup.component';
 import { SendotpComponent } from './modules/auth/sendotp/sendotp.component';
 import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
+import { TranstolinkComponent } from './modules/auth/transtolink/transtolink.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'resetpw',
     component: ResetpwComponent,
+  },
+  {
+    path: 'transtolink',
+    component: TranstolinkComponent,
   }
   ,
   {
@@ -38,6 +43,7 @@ export const routes: Routes = [
     path: '**',
     redirectTo: 'home',
   },
+
 ];
 
 const config: ExtraOptions = {

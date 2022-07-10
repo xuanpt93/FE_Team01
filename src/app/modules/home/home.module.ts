@@ -8,6 +8,20 @@ import { ProfileComponent } from './profile/profile.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserlistsComponent } from './userlists/userlists.component';
+import { MatTableModule } from '@angular/material/table';
+import { StatiscalmanageComponent } from './statiscalmanage/statiscalmanage.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DeletejobEditerComponent } from './userlists/deletejob-editer/deletejob-editer.component';
+import { MatInputModule } from '@angular/material/input';
+import { AddjobeditorComponent } from './userlists/addjobeditor/addjobeditor.component';
+import { EditjobeditorComponent } from './userlists/editjobeditor/editjobeditor.component';
+
+
 
 const routes: Routes = [{
   path: '',
@@ -15,22 +29,40 @@ const routes: Routes = [{
   children: [
     {
       path: 'dashboard',
-      // loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      //loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
     },
     {
       path: 'profile',
       component: ProfileComponent,
-    }
+    },
+    {
+      path: 'userlists',
+      component: UserlistsComponent,
+    },
+    {
+      path: 'statiscalmanage',
+      component: StatiscalmanageComponent,
+    },
 
   ],
 }];
 
 @NgModule({
+
   declarations: [
+
     HomeComponent,
     ProfileComponent,
+    UserlistsComponent,
+    StatiscalmanageComponent,
+    DeletejobEditerComponent,
+    AddjobeditorComponent,
+    EditjobeditorComponent
   ],
+  entryComponents: [DeletejobEditerComponent],
   imports: [
+    MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule,
+    MatInputModule,
     CommonModule,
     RouterModule.forChild(routes),
     ThemeModule,
