@@ -34,7 +34,12 @@ export class AuthService {
   }
 
   public resetpw(form: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}newPass-setting` + "?newpass=" + form.newpass + "&" + "opt=" + form.otp, null);
+    return this.http.post(`${this.baseUrl}newPass-setting` + "?password=" + form.password + "&" + "opt=" + form.otp, null);
+  }
+
+  public activeAcc(): Observable<any> {
+    const id = (localStorage.getItem("activeID"))
+    return this.http.get(`http://localhost:9090/api/public/active_account?id=` + id);
   }
 
 }

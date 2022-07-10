@@ -25,6 +25,8 @@ import { Interceptor } from './@core/interceptor/interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SendotpComponent } from './modules/auth/sendotp/sendotp.component';
 import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 const configToast: any = {
@@ -39,7 +41,7 @@ const configToast: any = {
 @NgModule({
   declarations: [AppComponent, SendotpComponent, ResetpwComponent],
   imports: [
-    BrowserModule,
+    BrowserModule, MatTableModule,
     FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,

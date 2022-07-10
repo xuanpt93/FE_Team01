@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Trang chủ',
     icon: 'home-outline',
-    link: '/home/dashboard',
+    link: '/home/statiscalmanage',
     home: true,
   },
   {
@@ -14,7 +14,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Người dùng',
     icon: 'person-outline',
-    link: '/home/user',
+    link: '/home/userlists',
   },
   {
     title: 'Sản phẩm',
