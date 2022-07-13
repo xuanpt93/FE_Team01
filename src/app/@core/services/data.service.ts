@@ -13,4 +13,13 @@ export class DataService {
         return this.username;
     }
 
+    jobReg: any;
+    setJobReg(element : any ){
+        return this.jobReg = element
+    }
+
+    getJobReg(){
+        return this.jobReg;
+    }
+
 }
