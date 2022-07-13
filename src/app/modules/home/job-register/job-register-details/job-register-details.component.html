@@ -1,0 +1,49 @@
+<div class="btnfix">
+    <button type="button" id="btn" class="btn btn-primary">Tải xuống CV</button>
+
+<div *ngIf="!check">
+    <button type="button" id="btn" class="btn btn-primary">Xét duyệt</button>
+</div>
+<div *ngIf="!check">
+    <button type="button" id="btn" class="btn btn-primary">Từ chối ứng viên</button>
+</div>
+
+<button type="button" id="btn" (click)="click()" class="btn btn-primary">Xem lí do</button>
+
+<button type="button" id="btn" class="btn btn-primary">Đặt lịch phỏng vấn</button>
+
+</div>
+<table style="width:80%;" class="table">
+    <thead>
+        <tr>
+            <th scope="col">Trường thông tin</th>
+            <th scope="col">Thông tin chi tiết</th>
+        </tr>
+        <tr>
+            <th scope="row">Vị trí công việc</th>
+            <td> {{dataSource.job.jobPosition.description}} </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Tên ứng viên</th>
+            <td> {{dataSource.user.name}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Email</th>
+            <td> {{dataSource.user.email}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Số điện thoại</th>
+            <td> {{dataSource.user.phoneNumber}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Ngày sinh</th>
+            <td> {{dataSource.user.birthDay}} </td>
+        </tr>
+        <tr>
+            <th scope="row">Mức lương mong muốn</th>
+            <td> {{dataSource.job.salaryMax}}</td><span><i class="fa fa-dollar" style="font-size:24px"></i></span>
+        </tr>
+    </thead>
+
+</table>

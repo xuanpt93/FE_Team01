@@ -10,7 +10,6 @@ import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserlistsComponent } from './userlists/userlists.component';
 import { MatTableModule } from '@angular/material/table';
-import { StatiscalmanageComponent } from './statiscalmanage/statiscalmanage.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,8 +21,14 @@ import { AddjobeditorComponent } from './userlists/addjobeditor/addjobeditor.com
 import { EditjobeditorComponent } from './userlists/editjobeditor/editjobeditor.component';
 import { JobComponent } from './job/job.component';
 import { DetailsComponent } from './job/details/details.component';
-
-
+import { StatiscalmanageComponent } from './statiscalmanage/statiscalmanage.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { JobRegisterComponent } from './job-register/job-register.component';
+import { JobRegisterDetailsComponent } from './job-register/job-register-details/job-register-details.component';
+import { AddJobRegisterComponent } from './job-register/add-job-register/add-job-register.component';
+import { DeleteComponent } from './job-register/delete/delete.component';
 
 const routes: Routes = [{
   path: '',
@@ -45,6 +50,15 @@ const routes: Routes = [{
       path: 'statiscalmanage',
       component: StatiscalmanageComponent,
     },
+    {
+      path: 'job_register',
+      component: JobRegisterComponent,
+    },
+    {
+      path: 'job_regiser_details',
+      component : JobRegisterDetailsComponent,
+    }
+   
 
     {
       path: 'jobcomponent',
@@ -72,11 +86,15 @@ const routes: Routes = [{
     EditjobeditorComponent,
     JobComponent,
     DetailsComponent
+    JobRegisterComponent,
+    JobRegisterDetailsComponent,
+    AddJobRegisterComponent,
+    DeleteComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
-    MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule,
-    MatInputModule,
+    MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatCardModule, MatCheckboxModule,
+    MatInputModule, MatToolbarModule,
     CommonModule,
     RouterModule.forChild(routes),
     ThemeModule,

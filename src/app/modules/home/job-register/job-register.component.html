@@ -1,0 +1,89 @@
+
+<div class="example-button-row">
+    <form class="example-form">
+        <div class="fix-layout-content">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input type="text" matInput placeholder="mã ứng viên, mã công việc" name="info" id="searchStr">
+                <mat-icon matPrefix (click)="search()">search</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Sắp xếp theo</mat-label>
+                <select aria-label="State" matNativeControl required (change)="selected($event)">
+                    <option value=""></option>
+                    <option value="" value="dateInterview">ngày phỏng vấn</option>
+                    <!-- <option value="" value="dateRegister" *ngFor="let obj of sortByLastModifiedDesc"> {{obj.jobRegister.dateRegister}}ngày phỏng vấn</option> -->
+                </select>
+
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="example-flex-container">
+        <div class="example-button-container">
+            <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="addJR()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="example-button-container">
+            <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon"
+                (click)="deleteJR()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+    </div>
+</div>
+<div class="table-data">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let i = index"> {{i+1}} </td>
+    </ng-container>
+    <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef>Tên ứng viên</th>
+        <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
+      </ng-container>
+  
+
+    <ng-container matColumnDef="dateInterview">
+        <th mat-header-cell *matHeaderCellDef>Ngày phỏng vấn</th>
+        <td mat-cell *matCellDef="let element"> {{element.dateInterview}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateRegister">
+        <th mat-header-cell *matHeaderCellDef> Ngày ứng tuyển</th>
+        <td mat-cell *matCellDef="let element"> {{element.dateRegister}} </td>
+    </ng-container>
+    <ng-container matColumnDef="methodInterview">
+      <th mat-header-cell *matHeaderCellDef>Hình thức phỏng vấn</th>
+      <td mat-cell *matCellDef="let element"> {{element.methodInterview}} </td>
+  </ng-container>
+ 
+<ng-container matColumnDef="statusJobRegister">
+  <th mat-header-cell *matHeaderCellDef></th>
+  <td mat-cell *matCellDef="let element"> {{element.statusJobRegister.name}} 
+    <button (click)="showDetails(element)" class="btn btn-primary">Chi tiết</button>
+
+  </td>
+  
+</ng-container>
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let element">
+            <div class="example-button-container">
+                <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon"
+                    (click)="editJR(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <button  id="al" aria-label="Name"><tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>hihih</button> 
+</table>
+<mat-paginator [length]='100' [pageIndex]="currentPage" [pageSize]="pageSize" (page)="pageChanged($event)"
+    [pageSizeOptions]="pageSizeOptions" aria-label="Select page">
+</mat-paginator>
+</div>
+
