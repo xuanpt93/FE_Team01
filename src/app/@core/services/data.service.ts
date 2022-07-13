@@ -22,6 +22,7 @@ export class DataService {
     }
 
 
+
     jobsneed: any;
     setjobsneed(element: any) {
         this.
@@ -32,4 +33,15 @@ export class DataService {
         return this.
             jobsneed;
     }
+
+    jobReg: any;
+    setJobReg(element : any ){
+        return this.jobReg = element
+    }
+
+    getJobReg(){
+        return this.jobReg;
+    }
+
+
 }

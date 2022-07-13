@@ -7,6 +7,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
 import { UserlistsComponent } from './modules/home/userlists/userlists.component';
+import { JobRegisterComponent } from './modules/home/job-register/job-register.component';
 
 @Component({
   selector: 'ngx-app',

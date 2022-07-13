@@ -23,6 +23,10 @@ import { StatiscalmanageComponent } from './statiscalmanage/statiscalmanage.comp
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { JobRegisterComponent } from './job-register/job-register.component';
+import { JobRegisterDetailsComponent } from './job-register/job-register-details/job-register-details.component';
+import { AddJobRegisterComponent } from './job-register/add-job-register/add-job-register.component';
+import { DeleteComponent } from './job-register/delete/delete.component';
 
 
 
@@ -46,6 +50,15 @@ const routes: Routes = [{
       path: 'statiscalmanage',
       component: StatiscalmanageComponent,
     },
+    {
+      path: 'job_register',
+      component: JobRegisterComponent,
+    },
+    {
+      path: 'job_regiser_details',
+      component : JobRegisterDetailsComponent,
+    }
+   
 
   ],
 }];
@@ -61,6 +74,10 @@ const routes: Routes = [{
     DeletejobEditerComponent,
     AddjobeditorComponent,
     EditjobeditorComponent,
+    JobRegisterComponent,
+    JobRegisterDetailsComponent,
+    AddJobRegisterComponent,
+    DeleteComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
