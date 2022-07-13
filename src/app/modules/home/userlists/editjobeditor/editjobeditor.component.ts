@@ -14,7 +14,9 @@ import { DialogData } from '../userlists.component';
 export class EditjobeditorComponent implements OnInit {
   formUpdate: FormGroup;
   public messages = '';
-  username = ''
+  username = '';
+  user: any;
+  password: string;
   constructor(private admicontrolService: AdminControllerService, private fb: FormBuilder, private router: Router, private dataService: DataService,
     public dialogRef: MatDialogRef<EditjobeditorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,) { }
@@ -22,18 +24,25 @@ export class EditjobeditorComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.username = this.dataService.getUserNamxe();
+    this.user = this.dataService.getUser();
   }
+
+  reEnterPass(event: any) {
+    return this.password = String(event.target.value);
+
+  }
+
 
   initForm() {
     this.formUpdate = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]],
       email: ['', [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required]],
+      newPassword: ['', [Validators.required, Validators.pattern(this.password)]],
       birthDay: ['', Validators.required],
       phoneNumber: ['', Validators.pattern('^[0-9]{10}')],
       name: ['', Validators.required],
-      gender: ['', Validators.required]
+      gender: ['', Validators.required],
     });
   }
   get f() {

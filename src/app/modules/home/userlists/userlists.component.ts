@@ -26,7 +26,7 @@ export interface DialogData {
   styleUrls: ['./userlists.component.scss']
 })
 export class UserlistsComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'userName', 'gender', 'name', 'phoneNumber', 'email', 'birthDay', 'edit'];
+  displayedColumns: string[] = ['position', 'userName', 'gender', 'name', 'phoneNumber', 'email', 'birthDay', 'edit', 'Status'];
   dataSource: [];
   currentPage = 0;
   pageSize = 1;
@@ -50,9 +50,7 @@ export class UserlistsComponent implements OnInit {
     this.admincController.getListJE(this.obj).subscribe(
       Response => {
         this.dataSource = Response;
-        this.dataSource.map(objs => {
-          return { objs, birthDay: "ok" }
-        })
+
       }, error => {
         console.log(error);
       }
@@ -72,6 +70,7 @@ export class UserlistsComponent implements OnInit {
 
   editJE(element: any) {
     this.dataService.getUserName(element.userName);
+    this.dataService.setUser(element);
     this.dialog.open(EditjobeditorComponent);
   }
 
@@ -122,6 +121,10 @@ export class UserlistsComponent implements OnInit {
       }
     );
 
+  }
+
+  Active(element: any) {
+    this.admincController.deActiveJE(element.userName).subscribe();
   }
 
 }
