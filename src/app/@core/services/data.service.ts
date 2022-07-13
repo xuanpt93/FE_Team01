@@ -13,4 +13,12 @@ export class DataService {
         return this.username;
     }
 
+    jobdetails: any;
+    setJobDetailsName(element: any){
+        return this.jobdetails = element;
+    }
+    getJobDetailsName(){
+        return this.jobdetails;
+    }
+
 }

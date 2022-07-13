@@ -1,0 +1,111 @@
+<div class="btnfix">
+    <button type="button" id="btn" class="btn btn-primary">Cập nhật</button>
+
+<div *ngIf="!check">
+    <button type="button" id="btn" class="btn btn-primary">Xem trước</button>
+</div>
+
+<div *ngIf="!check">
+    <button type="button" id="btn" class="btn btn-primary">Xét duyệt</button>
+</div>
+<div  *ngIf="!check">
+    <button type="button" id="btn" (click)="click()" class="btn btn-primary">Từ chối duyệt</button>
+</div>
+<div  *ngIf="!check">
+    <button type="button" id="btn" class="btn btn-primary">Đăng tuyển</button>
+</div>
+<div  *ngIf="!check">
+  <button type="button" id="btn" class="btn btn-primary">Dừng tuyển</button>
+</div>
+<div  *ngIf="!check">
+  <button type="button" id="btn" class="btn btn-primary">Đóng</button>
+</div>
+<div  *ngIf="!check">
+  <button type="button" id="btn" class="btn btn-primary">Xóa</button>
+</div>
+<!-- 
+<button type="button" id="btn" (click)="click()" class="btn btn-primary">Xem lí do</button>
+
+<button type="button" id="btn" class="btn btn-primary">Đặt lịch phỏng vấn</button> --> 
+
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="font-size: 1.5rem;">Trường thông tin</th>
+        <th scope="col" style="font-size: 1.5rem;">Thông tin chi tiết</th>
+      </tr>
+      <tr>
+        <th scope="row">Tên công việc</th>
+        <td > {{jobdetails.name}} </td>
+       
+      </tr>
+      <tr>
+        <th scope="row">Vị trí tuyển dụng</th>
+        <td > {{jobdetails.jobPositionId}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Số năm kinh nghiệm</th>
+        <td > {{jobdetails.numberExperience}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Hình thức làm việc</th>
+        <td > {{jobdetails.workingForm.description}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Địa chỉ làm việc</th>
+        <td > {{jobdetails.addressWork}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Trình độ học vấn</th>
+        <td > {{jobdetails.academicLevel}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Trình độ chuyên môn</th>
+        <td > {{jobdetails.rank.description}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Số lượng tuyển</th>
+        <td > {{jobdetails.qtyPerson}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Hạn nộp hồ sơ</th>
+        <td > {{jobdetails.dueDate}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Kỹ năng</th>
+        <td > {{jobdetails.skills}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Mô tả công việc</th>
+        <td > {{jobdetails.description}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Quyền lợi</th>
+        <td > {{jobdetails.benefits}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Yêu cầu</th>
+        <td > {{jobdetails.jobRequirement}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Mức lương tối đa</th>
+        <td > {{jobdetails.salaryMax}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Mức lương tối thiểu</th>
+        <td > {{jobdetails.salaryMin}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Liên hệ</th>
+        <td > {{jobdetails.contact.email}} </td>
+      </tr>
+      <tr>
+        <th scope="row">Trạng thái</th>
+        <td > {{jobdetails.statusJob.description}} </td>
+      </tr>
+    </thead>
+   
+  </table>

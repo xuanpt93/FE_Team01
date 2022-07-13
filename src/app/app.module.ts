@@ -28,7 +28,6 @@ import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
 import { MatTableModule } from '@angular/material/table';
 
 
-
 const configToast: any = {
   timeOut: 3000,
   positionClass: 'toast-top-right',

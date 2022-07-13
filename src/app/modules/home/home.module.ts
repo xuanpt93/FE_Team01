@@ -20,6 +20,8 @@ import { DeletejobEditerComponent } from './userlists/deletejob-editer/deletejob
 import { MatInputModule } from '@angular/material/input';
 import { AddjobeditorComponent } from './userlists/addjobeditor/addjobeditor.component';
 import { EditjobeditorComponent } from './userlists/editjobeditor/editjobeditor.component';
+import { JobComponent } from './job/job.component';
+import { DetailsComponent } from './job/details/details.component';
 
 
 
@@ -44,6 +46,16 @@ const routes: Routes = [{
       component: StatiscalmanageComponent,
     },
 
+    {
+      path: 'jobcomponent',
+      component: JobComponent,
+    },
+
+    {
+      path: 'details',
+      component: DetailsComponent
+    }
+
   ],
 }];
 
@@ -57,7 +69,9 @@ const routes: Routes = [{
     StatiscalmanageComponent,
     DeletejobEditerComponent,
     AddjobeditorComponent,
-    EditjobeditorComponent
+    EditjobeditorComponent,
+    JobComponent,
+    DetailsComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
