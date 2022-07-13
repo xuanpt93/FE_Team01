@@ -19,6 +19,8 @@ import { DeletejobEditerComponent } from './userlists/deletejob-editer/deletejob
 import { MatInputModule } from '@angular/material/input';
 import { AddjobeditorComponent } from './userlists/addjobeditor/addjobeditor.component';
 import { EditjobeditorComponent } from './userlists/editjobeditor/editjobeditor.component';
+import { JobComponent } from './job/job.component';
+import { DetailsComponent } from './job/details/details.component';
 import { StatiscalmanageComponent } from './statiscalmanage/statiscalmanage.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -27,8 +29,6 @@ import { JobRegisterComponent } from './job-register/job-register.component';
 import { JobRegisterDetailsComponent } from './job-register/job-register-details/job-register-details.component';
 import { AddJobRegisterComponent } from './job-register/add-job-register/add-job-register.component';
 import { DeleteComponent } from './job-register/delete/delete.component';
-
-
 
 const routes: Routes = [{
   path: '',
@@ -60,6 +60,16 @@ const routes: Routes = [{
     }
    
 
+    {
+      path: 'jobcomponent',
+      component: JobComponent,
+    },
+
+    {
+      path: 'details',
+      component: DetailsComponent
+    }
+
   ],
 }];
 
@@ -74,6 +84,8 @@ const routes: Routes = [{
     DeletejobEditerComponent,
     AddjobeditorComponent,
     EditjobeditorComponent,
+    JobComponent,
+    DetailsComponent
     JobRegisterComponent,
     JobRegisterDetailsComponent,
     AddJobRegisterComponent,

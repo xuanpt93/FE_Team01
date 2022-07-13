@@ -44,4 +44,12 @@ export class DataService {
     }
 
 
+    jobdetails: any;
+    setJobDetailsName(element: any){
+        return this.jobdetails = element;
+    }
+    getJobDetailsName(){
+        return this.jobdetails;
+    }
+
 }
