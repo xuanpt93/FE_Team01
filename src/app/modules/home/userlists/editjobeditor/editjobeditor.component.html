@@ -1,7 +1,7 @@
 <div class="example-label"><b style="
     top: -8px;
 position: relative;
-left: 192px;">Tạo mới nhân viên</b>
+left: 192px;">Cập nhật thông tin nhân viên</b>
     <form [formGroup]="formUpdate" class="example-form">
         <div class="onaline">
             <mat-form-field class="example-full-width" appearance="fill">
@@ -13,7 +13,8 @@ left: 192px;">Tạo mới nhân viên</b>
                     <small class="text-danger">*{{messages}}</small>
                 </div>
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="Ex. username" formControlName="userName" type="text">
+                <input matInput placeholder="Ex. username" formControlName="userName" type="text"
+                    [(ngModel)]="user.userName">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
@@ -33,7 +34,8 @@ left: 192px;">Tạo mới nhân viên</b>
                     </div>
                 </div>
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Ex. 1123@mail.com" formControlName="email" type="text">
+                <input matInput placeholder="Ex. 1123@mail.com" formControlName="email" type="text"
+                    [(ngModel)]="user.email">
             </mat-form-field>
 
         </div>
@@ -48,17 +50,19 @@ left: 192px;">Tạo mới nhân viên</b>
                     <small class="text-danger">*{{messages}}</small>
                 </div>
                 <mat-label>Số điện thoại</mat-label>
-                <input matInput placeholder="Ex. 01213245534(không bắt buộc)" formControlName="phoneNumber" type="text">
+                <input matInput placeholder="Ex. 01213245534(không bắt buộc)" formControlName="phoneNumber" type="text"
+                    [(ngModel)]="user.phoneNumber">
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>ngày sinh</mat-label>
-                <input matInput placeholder="Ex. 13/05/2001" formControlName="birthDay" type="date">
+                <input matInput placeholder="Ex. 13/05/2001" formControlName="birthDay" type="date"
+                    [(ngModel)]="user.birthDay">
             </mat-form-field>
         </div>
         <div class="onaline">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Giới tính</mat-label>
-                <select matNativeControl required formControlName="gender">
+                <select matNativeControl required formControlName="gender" [(ngModel)]="user.gender">
                     <option value="Nam">Nam</option>
                     <option value="Nữ">Nữ</option>
                     <option value="Khác">Khác</option>
@@ -66,7 +70,8 @@ left: 192px;">Tạo mới nhân viên</b>
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Họ và tên</mat-label>
-                <input matInput placeholder="Ex. Nguyễn Văn A" formControlName="name" type="text">
+                <input matInput placeholder="Ex. Nguyễn Văn A" formControlName="name" type="text"
+                    [(ngModel)]="user.name">
             </mat-form-field>
         </div>
         <div class="onaline">
@@ -86,7 +91,8 @@ left: 192px;">Tạo mới nhân viên</b>
                     <small class="text-danger">*Mật khẩu không khớp</small>
                 </div>
                 <mat-label>Mật khẩu</mat-label>
-                <input matInput placeholder="Ex. 123@aaAA12" formControlName="password" type="password">
+                <input matInput placeholder="Ex. 123@aaAA12" formControlName="password" type="password" id="newPassword"
+                    (change)="reEnterPass($event)">
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Mật lại mật khẩu</mat-label>
@@ -96,11 +102,11 @@ left: 192px;">Tạo mới nhân viên</b>
         </div>
 
         <div class="example-button-row">
-            <button mat-stroked-button color="warn" [disabled]="!formUpdate.valid" (click)='addJEConfirm($event)'>Tạo
-                mới</button>
+            <button mat-stroked-button color="warn" [disabled]="!formUpdate.valid" (click)='addJEConfirm($event)'>Cập
+                nhật</button>
         </div>
         <div class="example-button-row">
-            <button mat-raised-button mat-dialog-close (click)='cancelAction($event)'>Thôi</button>
+            <button mat-raised-button mat-dialog-close (click)='cancelAction($event)'>Hủy</button>
         </div>
     </form>
 

@@ -12,5 +12,24 @@ export class DataService {
     getUserNamxe() {
         return this.username;
     }
+    user: any;
+    setUser(element: any) {
+        this.user = element;
+    }
 
+    getUser() {
+        return this.user;
+    }
+
+
+    jobsneed: any;
+    setjobsneed(element: any) {
+        this.
+            jobsneed = element;
+    }
+
+    getjobsneed() {
+        return this.
+            jobsneed;
+    }
 }
