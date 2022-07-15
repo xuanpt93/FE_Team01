@@ -42,4 +42,8 @@ export class AuthService {
     return this.http.get(`http://localhost:9090/api/public/active_account?id=` + id);
   }
 
+  public changepasswword(form: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}change-password?curpassword=` + form.currentpassword + `&password=` + form.password + `&username=` + localStorage.getItem("token").split(",")[0].split(':')[1].replace('"', '').replace('"', ''), null);
+  }
+
 }

@@ -31,6 +31,10 @@ import { AddJobRegisterComponent } from './job-register/add-job-register/add-job
 import { DeleteComponent } from './job-register/delete/delete.component';
 import { DownloadCvComponent } from './job-register/download-cv/download-cv.component';
 import { ViewReasonsComponent } from './job-register/view-reasons/view-reasons.component';
+import { DeleteComponent } from './job-register/delete/delete.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { AddjobComponent } from './job/addjob/addjob.component';
 
 const routes: Routes = [{
   path: '',
@@ -60,16 +64,23 @@ const routes: Routes = [{
       path: 'job_regiser_details',
       component : JobRegisterDetailsComponent,
     },
-   
-
     {
       path: 'jobcomponent',
       component: JobComponent,
     },
 
     {
+      path: 'addjobcomponent',
+      component: AddjobComponent,
+    },
+
+    {
       path: 'details',
       component: DetailsComponent
+    },
+    {
+      path: 'changePassword',
+      component: ChangepasswordComponent,
     }
 
   ],
@@ -94,11 +105,13 @@ const routes: Routes = [{
     DeleteComponent,
     DownloadCvComponent,
     ViewReasonsComponent
+    ChangepasswordComponent
+    AddjobComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
     MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatCardModule, MatCheckboxModule,
-    MatInputModule, MatToolbarModule,
+    MatInputModule, MatToolbarModule, MatSnackBarModule,
     CommonModule,
     RouterModule.forChild(routes),
     ThemeModule,

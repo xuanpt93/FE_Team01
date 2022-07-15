@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params, Router } from '@angular/router';
+import { AnySoaRecord } from 'dns';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -49,5 +50,21 @@ export class JobControllerService {
 
         return this.http.get(`${this.baseUrl}job/needs/month?month=` + param);
     }
+
+    public getcountSuccessJobReg(param): Observable<any> {
+
+        return this.http.get(`${this.baseUrl}number/jobreg/success?month=` + param);
+    }
+
+    public getAllJobs(form: any): Observable<any> {
+
+        return this.http.post(`${this.baseUrl}job/search`, form);
+    }
+
+    public updateview(param): Observable<any> {
+
+        return this.http.get(`${this.baseUrl}job/updating/views?id=` + param);
+    }
+
 
 }

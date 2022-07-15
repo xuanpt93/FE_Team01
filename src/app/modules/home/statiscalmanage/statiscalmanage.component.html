@@ -19,15 +19,15 @@
     <div class="fix-card">
         <mat-card>Tổng số lượt xem: {{jobviews}}</mat-card>
         <mat-card>Tổng số ứng viên ứng tuyển: {{jobReg}}</mat-card>
-        <mat-card>Tổng số ứng viên thành công: {{jobRegSuccess}}</mat-card>
-        <mat-card>Tổng số ứng viên bị từ chối: {{jobReqFailed}}</mat-card>
+        <mat-card>Tổng số ứng viên thành công: {{pieData[1]}}</mat-card>
+        <mat-card>Tổng số ứng viên bị từ chối: {{pieData[0]}}</mat-card>
     </div>
 </div>
 
 <div class="fix-content">
 
     <div>
-        <canvas #lineCanvas style="height:100px; width:100px"></canvas>
+        <canvas id="lineCanvas" style="height:100px; width:100px"></canvas>
     </div>
     <canvas id="myPieChart" width="500px" height="350px"></canvas>
 </div>

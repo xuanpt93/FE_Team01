@@ -1,7 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AnyAaaaRecord } from 'dns';
 import { AdminControllerService } from '../../../../@core/services/adminController.service';
 import { DataService } from '../../../../@core/services/data.service';
 import { DialogData } from '../userlists.component';
@@ -16,8 +18,9 @@ export class EditjobeditorComponent implements OnInit {
   public messages = '';
   username = '';
   user: any;
-  password: string;
-  constructor(private admicontrolService: AdminControllerService, private fb: FormBuilder, private router: Router, private dataService: DataService,
+  birthDay = '';
+  constructor(private admicontrolService: AdminControllerService, private fb: FormBuilder, private router: Router
+    , private dataService: DataService, private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<EditjobeditorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,) { }
 
@@ -25,20 +28,16 @@ export class EditjobeditorComponent implements OnInit {
     this.initForm();
     this.username = this.dataService.getUserNamxe();
     this.user = this.dataService.getUser();
-  }
-
-  reEnterPass(event: any) {
-    return this.password = String(event.target.value);
-
+    const birthday = this.user.birthDay.split('-');
+    console.log(birthday);
+    this.birthDay = birthday[2] + '-' + birthday[1] + '-' + birthday[0];
   }
 
 
   initForm() {
     this.formUpdate = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]],
       email: ['', [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required, Validators.pattern(this.password)]],
       birthDay: ['', Validators.required],
       phoneNumber: ['', Validators.pattern('^[0-9]{10}')],
       name: ['', Validators.required],
@@ -52,10 +51,15 @@ export class EditjobeditorComponent implements OnInit {
   addJEConfirm(event: Event) {
     event.preventDefault();
     if (this.formUpdate.valid) {
+      const birthday = this.formUpdate.value.birthDay.split('-');
+      const birthDaynew = birthday[2] + '-' + birthday[1] + '-' + birthday[0];
+      this.formUpdate.patchValue({ birthDay: birthDaynew });
       this.admicontrolService.updateJEInfor(this.formUpdate.value, this.username).subscribe(
         Response => {
           if (Response.httpStatus === "OK") {
-            alert('Cập nhật thành công!');
+            this._snackBar.open("Cập nhật thành công", "Đồng ý", {
+              duration: 4000
+            });
             this.dialogRef.close();
             this.router.navigate(['/home/userlists']);
           }

@@ -27,11 +27,12 @@ left: 192px;">Cập nhật thông tin nhân viên</b>
                             <div *ngIf="f.email.errors.email">
                                 <small class="text-danger">*Sai định dạng</small>
                             </div>
+                            <div *ngIf="messages === 'Email đã tồn tại'">
+                                <small class="text-danger">*{{messages}}</small>
+                            </div>
                         </div>
                     </div>
-                    <div *ngIf="messages === 'Email đã tồn tại'">
-                        <small class="text-danger">*{{messages}}</small>
-                    </div>
+
                 </div>
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Ex. 1123@mail.com" formControlName="email" type="text"
@@ -56,7 +57,7 @@ left: 192px;">Cập nhật thông tin nhân viên</b>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>ngày sinh</mat-label>
                 <input matInput placeholder="Ex. 13/05/2001" formControlName="birthDay" type="date"
-                    [(ngModel)]="user.birthDay">
+                    [(ngModel)]="birthDay">
             </mat-form-field>
         </div>
         <div class="onaline">
@@ -74,32 +75,7 @@ left: 192px;">Cập nhật thông tin nhân viên</b>
                     [(ngModel)]="user.name">
             </mat-form-field>
         </div>
-        <div class="onaline">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <div *ngIf=" f.password.invalid && (f.password.dirty || f.password.touched)">
-                    <!-- <div *ngIf="f.password.errors"> -->
-                    <div *ngIf="f.password.errors.required">
-                        <small class="text-danger">*Không được bỏ trống</small>
-                    </div>
-                    <div *ngIf="f.password.errors.pattern">
-                        <small class="text-danger">*Sai định dạng</small>
-                    </div>
-                    <!-- </div> -->
-                </div>
-                <div class="display-block"
-                    *ngIf="!(f.password.value===f.newPassword.value) || !(f.password.value !== null && f.newPassword.value !== null) ">
-                    <small class="text-danger">*Mật khẩu không khớp</small>
-                </div>
-                <mat-label>Mật khẩu</mat-label>
-                <input matInput placeholder="Ex. 123@aaAA12" formControlName="password" type="password" id="newPassword"
-                    (change)="reEnterPass($event)">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Mật lại mật khẩu</mat-label>
-                <input matInput placeholder="Ex. Phải khớp mật khẩu phía trên" formControlName="newPassword"
-                    type="password">
-            </mat-form-field>
-        </div>
+
 
         <div class="example-button-row">
             <button mat-stroked-button color="warn" [disabled]="!formUpdate.valid" (click)='addJEConfirm($event)'>Cập
