@@ -5,6 +5,7 @@ import { DataService } from '../../../@core/services/data.service';
 import { PageEvent } from '@angular/material/paginator';
 import { DetailsComponent } from './details/details.component';
 import { Route, Router } from '@angular/router';
+import { AddjobComponent } from './addjob/addjob.component';
 
 @Component({
   selector: 'ngx-job',
@@ -93,6 +94,9 @@ export class JobComponent implements OnInit {
       }
     );
 
+  }
+  addJob() {
+    this.router.navigate(["/home/addjobcomponent"]);
   }
 
 }

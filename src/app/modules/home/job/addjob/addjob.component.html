@@ -1,0 +1,125 @@
+<div class="example-label"><b style="
+    top: -8px;
+position: relative;
+left: 350px;
+font-size: 1.5rem;">Nhập thông tin công việc</b>
+</div>
+<form [formGroup]="formAdd" class="example-form">
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Tên công việc</mat-label>
+        <input matInput placeholder="Nhập tên công việc" formControlName="name" type="text">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Vị trí công việc</mat-label>
+        <select matNativeControl formControlName="jobPosition">
+          <option value="dev" selected>dev</option>
+          <option value="test">test</option>
+          <option value="BA">BA</option>
+          <option value="PM">PM</option>
+        </select>
+        </mat-form-field>
+    </div>
+
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+            <mat-label>Số năm kinh nghiệm</mat-label>
+            <input matInput placeholder="Nhập số năm kinh nghiệm" formControlName="numberExperience" type="number">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill" color="accent">
+            <mat-label>Hình thức làm việc</mat-label>
+            <select matNativeControl formControlName="workingForm">
+              <option value="Full time" selected>Full time</option>
+              <option value="Part time">Part time</option>
+              <option value="freelancer">freelancer</option>
+              <option value="intern">intern</option>
+            </select>
+            </mat-form-field>
+    </div>
+
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+      <mat-label>Địa chỉ làm việc</mat-label>
+      <select matNativeControl formControlName="addressWork">
+        <option value="Hà Nội" selected>Hà Nội</option>
+        <option value="Sài Gòn">Sài Gòn</option>
+        <option value="Đà Nẵng">Đà Nẵng</option>
+        <option value="Hải Phòng">Hải Phòng</option>
+      </select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill" color="accent">
+            <mat-label>Trình độ học vấn</mat-label>
+            <select matNativeControl formControlName="academicLevel">
+              <option value="Đại học" selected>Đại học</option>
+              <option value="Cao Đẳng">Cao Đẳng</option>
+              <option value="TC Nghề">TC Nghề</option>
+              <option value="Cao học">Cao học</option>
+            </select>
+            </mat-form-field>
+    </div>
+
+    <div class="addname">
+      <mat-form-field class="example-full-width" appearance="fill" color="accent">
+            <mat-label>Trình độ chuyên môn</mat-label>
+            <select matNativeControl formControlName="rank">
+              <option value="Senior" selected>Senior</option>
+              <option value="Junior">Junior</option>
+              <option value="fresher">fresher</option>
+              <option value="intern">intern</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill" color="accent">
+              <mat-label>Ngày hết hạn</mat-label>
+              <input matInput placeholder="Nhập ngày hết hạn" formControlName="dueDate" type="date">
+            </mat-form-field>
+    </div>
+
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Kỹ năng</mat-label>
+        <input matInput placeholder="Nhập kỹ năng" formControlName="skills" type="text">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" color="accent">
+          <mat-label>Mô tả công việc</mat-label>
+          <input matInput placeholder="Nhập mô tả công việc" formControlName="description" type="text">
+        </mat-form-field>
+    </div>
+
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Quyền lợi</mat-label>
+        <input matInput placeholder="Nhập quyền lợi" formControlName="benefits" type="text">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" color="accent">
+          <mat-label>Yêu cầu</mat-label>
+          <input matInput placeholder="Nhập yêu cầu" formControlName="jobRequirement" type="text">
+        </mat-form-field>
+    </div>
+
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Mức lương cao nhất</mat-label>
+        <input matInput placeholder="Nhập mức lương cao nhất" formControlName="salaryMax" type="text">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" color="accent">
+          <mat-label>Mức lương thấp nhất</mat-label>
+          <input matInput placeholder="Nhập mức lương thấp nhất" formControlName="salaryMin" type="text">
+        </mat-form-field>
+    </div>
+
+    <div class="addname"><mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Liên hệ</mat-label>
+        <input matInput placeholder="Nhập liên hệ" formControlName="contact" type="text">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" color="accent">
+        <mat-label>Trạng thái công việc</mat-label>
+        <select matNativeControl formControlName="statusJob">
+          <option value="Chờ xét duyệt" selected>Chờ xét duyệt</option>
+          <option value="Đã từ chối">Đã từ chối</option>
+          <option value="đang tuyển">đang tuyển</option>
+          <option value="chưa đăng tuyển">chưa đăng tuyển</option>
+          <option value="đã đóng">đã đóng</option>
+        </select>
+        </mat-form-field>
+    </div>
+
+    <div class="example-button-row d-flex justify-content-center">
+        <button class="btn btn-primary mr-2" [disabled]="!formAdd.valid" (click)='addJobConfirm($event)'>Tạo
+            mới</button>
+        <button  type="reset" class="btn btn-primary">Hủy</button>
+    </div>
+  </form>

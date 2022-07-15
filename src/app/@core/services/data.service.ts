@@ -52,6 +52,7 @@ export class DataService {
         return this.jobdetails;
     }
 
+
     t11: number;
     sett11(element: number) {
         return this.t11 = element;
@@ -59,13 +60,19 @@ export class DataService {
     gett11() {
         return this.t11;
     }
-
     job: any;
     setJob(element: number) {
         return this.job = element;
     }
     getJob() {
         return this.job;
+
+    addjob: any;
+    setAddJobName(element: any){
+        return this.addjob = element;
+    }
+    getAddJobName(){
+        return this.addjob;
     }
 
 }

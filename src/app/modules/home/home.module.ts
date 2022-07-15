@@ -31,7 +31,7 @@ import { AddJobRegisterComponent } from './job-register/add-job-register/add-job
 import { DeleteComponent } from './job-register/delete/delete.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
-
+import { AddjobComponent } from './job/addjob/addjob.component';
 
 const routes: Routes = [{
   path: '',
@@ -59,13 +59,21 @@ const routes: Routes = [{
     },
     {
       path: 'job_regiser_details',
+
       component: JobRegisterDetailsComponent,
     }
     ,
 
+      component : JobRegisterDetailsComponent,
+    },
     {
       path: 'jobcomponent',
       component: JobComponent,
+    },
+
+    {
+      path: 'addjobcomponent',
+      component: AddjobComponent,
     },
 
     {
@@ -98,6 +106,7 @@ const routes: Routes = [{
     AddJobRegisterComponent,
     DeleteComponent,
     ChangepasswordComponent
+    AddjobComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
