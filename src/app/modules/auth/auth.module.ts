@@ -6,8 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { SignupComponent } from './signup/signup.component';
-import { SendotpComponent } from './sendotp/sendotp.component';
 import { TranstolinkComponent } from './transtolink/transtolink.component';
+import { JobpublicComponent } from '../public/jobpublic/jobpublic.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NbLayoutModule } from '@nebular/theme';
 
 const routes: Routes = [{
   path: '',
@@ -27,7 +29,10 @@ const routes: Routes = [{
     // }
 
   ],
-}];
+}, {
+  path: "jobpublic",
+  component: JobpublicComponent,
+},];
 
 @NgModule({
   declarations: [
@@ -35,7 +40,7 @@ const routes: Routes = [{
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes), MatSnackBarModule,
     ButtonModule,
     InputTextModule,
     ReactiveFormsModule
