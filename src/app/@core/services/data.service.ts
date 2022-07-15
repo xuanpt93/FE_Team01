@@ -52,4 +52,12 @@ export class DataService {
         return this.jobdetails;
     }
 
+    addjob: any;
+    setAddJobName(element: any){
+        return this.addjob = element;
+    }
+    getAddJobName(){
+        return this.addjob;
+    }
+
 }
