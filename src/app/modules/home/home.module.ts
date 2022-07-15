@@ -29,6 +29,9 @@ import { JobRegisterComponent } from './job-register/job-register.component';
 import { JobRegisterDetailsComponent } from './job-register/job-register-details/job-register-details.component';
 import { AddJobRegisterComponent } from './job-register/add-job-register/add-job-register.component';
 import { DeleteComponent } from './job-register/delete/delete.component';
+import { DownloadCvComponent } from './job-register/download-cv/download-cv.component';
+import { ViewReasonsComponent } from './job-register/view-reasons/view-reasons.component';
+import { DeleteComponent } from './job-register/delete/delete.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { AddjobComponent } from './job/addjob/addjob.component';
@@ -59,11 +62,6 @@ const routes: Routes = [{
     },
     {
       path: 'job_regiser_details',
-
-      component: JobRegisterDetailsComponent,
-    }
-    ,
-
       component : JobRegisterDetailsComponent,
     },
     {
@@ -105,6 +103,8 @@ const routes: Routes = [{
     JobRegisterDetailsComponent,
     AddJobRegisterComponent,
     DeleteComponent,
+    DownloadCvComponent,
+    ViewReasonsComponent
     ChangepasswordComponent
     AddjobComponent
   ],

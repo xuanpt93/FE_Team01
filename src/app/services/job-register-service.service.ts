@@ -2,24 +2,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }),
+};
 
 @Injectable({
   providedIn: 'root'
 })
-// private httpOptions = {
-//   headers: new HttpHeaders({
-//       'Content-Type': 'application-job_register/json',
-//       'Access-Control-Allow-Origin': '*',
-//   }),
-// };
+
+
 export class JobRegisterServiceService {
-  private httpOptions = {
-      headers: new HttpHeaders({
-          'Content-Type': 'application-job_register/json',
-          'Access-Control-Allow-Origin': '*',
-      }),
-    };
+  
   private readonly baseUrl = `${environment.apiUrl}public/`;
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -55,6 +54,34 @@ export class JobRegisterServiceService {
 
         return this.http.put(`${this.baseUrl}job_register-updating?username=` + param, form);
     }
+    
+    statusJobRegister : any;
+    reason : any;
+ 
+    setReasons(element: any) {
+        this.statusJobRegister = element;
+    }
+
+    getReasons() {
+        return this.statusJobRegister;
+    }
+
+    setReasonss(elementt: any) {
+        this.reason = elementt;
+    }
+
+    getReasonss() {
+        return this.reason;
+    }
+    public changeStatus(statusdto: any):Observable<any>{
+        return this.http.post(`${this.baseUrl}`+'job_register/updateStatusJobRegister',statusdto);
+      }
+
+      public changeReson(reasonDto):Observable<any>{
+        return this.http.put(`${this.baseUrl}job_regiser_details`,reasonDto);
+      }
+
+    
 
 
 }

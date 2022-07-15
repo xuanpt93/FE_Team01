@@ -10,7 +10,7 @@
                 <mat-label>Sắp xếp theo</mat-label>
                 <select aria-label="State" matNativeControl required (change)="selected($event)">
                     <option value=""></option>
-                    <option value="" value="dateInterview">ngày phỏng vấn</option>
+                    <option value="" value="dateInterview">Ngày ứng tuyển</option>
                     <!-- <option value="" value="dateRegister" *ngFor="let obj of sortByLastModifiedDesc"> {{obj.jobRegister.dateRegister}}ngày phỏng vấn</option> -->
                 </select>
 
@@ -63,10 +63,11 @@
   <th mat-header-cell *matHeaderCellDef></th>
   <td mat-cell *matCellDef="let element"> {{element.statusJobRegister.name}} 
     <button (click)="showDetails(element)" class="btn btn-primary">Chi tiết</button>
+    <button *ngIf="element.statusJobRegister.description === 'ứng viên hủy ứng tuyển' || element.statusJobRegister.description === 'ứng viên bị từ chối'" style="margin-left : 10px ;" (click)="viewReasons(element)" class="btn btn-primary">Xem lí do</button>
 
   </td>
-  
 </ng-container>
+
     <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef>Edit</th>
         <td mat-cell *matCellDef="let element">
