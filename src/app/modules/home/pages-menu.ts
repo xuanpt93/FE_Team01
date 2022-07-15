@@ -26,4 +26,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'globe-2-outline',
     link: '/home/product',
   },
+  {
+    title: 'Tin tuyển dụng',
+    icon: 'globe-2-outline',
+    link: '/home/jobcomponent',
+
+  }
 ];

@@ -28,9 +28,9 @@ private readonly baseUrl = `${environment.apiUrl}public/`;
 
   public createNewJob(form: any): Observable<any> {
 
-      return this.http.post(`${this.baseUrl}job-insertion`, form);
+      return this.http.post(`${this.baseUrl}job/add`, form);
   }
-  public updateJRInfor(form: any, param): Observable<any> {
+  public updateJobInfor(form: any, param): Observable<any> {
 
       return this.http.put(`${this.baseUrl}job-updating?username=` + param, form);
   }
@@ -43,6 +43,12 @@ public getListJobb(form: any): Observable<any> {
 
   return this.http.post(`${this.baseUrl}job`, form);
 }
+
+public getFieldSelect(form: any): Observable<any> {
+
+  return this.http.post(`${this.baseUrl}job/selct`, form);
+}
+
 public getListJWithBothS(form: any, search, sort): Observable<any> {
 
   return this.http.post(`${this.baseUrl}job?search` + search + `&sortBy=` + sort, form);
