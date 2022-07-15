@@ -1,17 +1,23 @@
-<div class="btnfix">
-    <button type="button" id="btn" class="btn btn-primary">Tải xuống CV</button>
-
-<div *ngIf="!check">
-    <button type="button" id="btn" class="btn btn-primary">Xét duyệt</button>
-</div>
-<div *ngIf="!check">
-    <button type="button" id="btn" class="btn btn-primary">Từ chối ứng viên</button>
-</div>
-
-<button type="button" id="btn" (click)="click()" class="btn btn-primary">Xem lí do</button>
-
-<button type="button" id="btn" class="btn btn-primary">Đặt lịch phỏng vấn</button>
-
+<div class="d-flex">
+    <div class="btnfix">
+        <button type="button" id="btn" (click)="downloadCV()" class="btn btn-primary">Tải xuống CV</button>
+    </div>
+    
+    <div *ngIf="this.dataSource.statusJobRegister?.code === 'Chờ duyệt'">
+        <button type="button" id="btn" class="btn btn-primary" (click)="status2()">Xét Duyệt</button>
+    </div>
+    
+    <div *ngIf="this.dataSource.statusJobRegister.code !== 'ứng viên bị từ chối'">
+        <button type="button" id="btn" class="btn btn-primary" (click)=" refuse()">Từ chối ứng viên</button>
+    </div>
+    
+    <div *ngIf="this.dataSource.statusJobRegister.code === 'ứng viên bị từ chối' ">
+        <button type="button" id="btn"  class="btn btn-primary">Xem lí do</button>
+    </div>
+    
+    <div *ngIf="this.dataSource.statusJobRegister.code === 'Chờ phỏng vấn' ">
+        <button type="button" id="btn" class="btn btn-primary">Đặt lịch phỏng vấn</button>
+    </div>
 </div>
 <table style="width:80%;" class="table">
     <thead>
@@ -45,5 +51,4 @@
             <td> {{dataSource.job.salaryMax}}</td><span><i class="fa fa-dollar" style="font-size:24px"></i></span>
         </tr>
     </thead>
-
 </table>

@@ -29,6 +29,8 @@ import { JobRegisterComponent } from './job-register/job-register.component';
 import { JobRegisterDetailsComponent } from './job-register/job-register-details/job-register-details.component';
 import { AddJobRegisterComponent } from './job-register/add-job-register/add-job-register.component';
 import { DeleteComponent } from './job-register/delete/delete.component';
+import { DownloadCvComponent } from './job-register/download-cv/download-cv.component';
+import { ViewReasonsComponent } from './job-register/view-reasons/view-reasons.component';
 
 const routes: Routes = [{
   path: '',
@@ -57,7 +59,7 @@ const routes: Routes = [{
     {
       path: 'job_regiser_details',
       component : JobRegisterDetailsComponent,
-    }
+    },
    
 
     {
@@ -85,11 +87,13 @@ const routes: Routes = [{
     AddjobeditorComponent,
     EditjobeditorComponent,
     JobComponent,
-    DetailsComponent
+    DetailsComponent,
     JobRegisterComponent,
     JobRegisterDetailsComponent,
     AddJobRegisterComponent,
-    DeleteComponent
+    DeleteComponent,
+    DownloadCvComponent,
+    ViewReasonsComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
