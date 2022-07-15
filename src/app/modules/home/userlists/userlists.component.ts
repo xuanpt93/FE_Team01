@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminControllerService } from '../../../@core/services/adminController.service';
 import { DataService } from '../../../@core/services/data.service';
 import { AddjobeditorComponent } from './addjobeditor/addjobeditor.component';
@@ -36,7 +37,8 @@ export class UserlistsComponent implements OnInit {
   obj = { "pageNumber": this.currentPage, "pageSize": this.pageSize };
   searchStr: string;
   sortStr: string;
-  constructor(private admincController: AdminControllerService, public dialog: MatDialog, public dataService: DataService) { }
+  constructor(private admincController: AdminControllerService,
+    private _snackBar: MatSnackBar, public dialog: MatDialog, public dataService: DataService) { }
 
 
 
@@ -124,7 +126,14 @@ export class UserlistsComponent implements OnInit {
   }
 
   Active(element: any) {
-    this.admincController.deActiveJE(element.userName).subscribe();
+    this.admincController.deActiveJE(element.userName).subscribe(
+      Response => {
+        if (Response.httpStatus === "OK") {
+          this._snackBar.open("Thành công", "Đồng ý", {
+            duration: 4000
+          });
+        }
+      });
   }
 
 }

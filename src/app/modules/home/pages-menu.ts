@@ -27,6 +27,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/home/product',
   },
   {
+    title: 'Trang public',
+    icon: 'globe-2-outline',
+    link: '/public/jobpublic',
+  },
     title: 'Tin tuyển dụng',
     icon: 'globe-2-outline',
     link: '/home/jobcomponent',

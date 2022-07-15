@@ -2,23 +2,29 @@
 <p-card>
     <form [formGroup]="formProfile">
         <div class="row">
-            <img src="http://localhost:9090/api/FileUploading/file/{{filename}}" alt="Avatar"
-                style="width:200px; border-radius: 50%;  margin: 0 auto; margin-bottom: 20px;">
+            <label style="
+            margin-left: 428px;">
+                <img src="http://localhost:9090/api/FileUploading/file/{{filename}}" alt="Avatar"
+                    style="width:200px; border-radius: 50%;  margin: 0 auto; margin-bottom: 20px;">
+                <input type="file" id="fileInput" name="fileInput" accept="image/*" (change)="selectFiles($event)"
+                    style="display: none;" />
+            </label>
         </div>
         <div class="form-row">
 
             <div class="form-group col-md-6">
                 <div class="row">
-                    <label class="label col-3 col-form-label ">Ảnh đại diện</label>
+                    <!-- <label class="label col-3 col-form-label ">Ảnh đại diện</label>
                     <div class="col-9" class="chooseAva">
                         <input type="file" id="fileInput" name="fileInput" accept="image/*"
                             (change)="selectFiles($event)" />
                         <button style="position: absolute;
                         right: 50px;
-                        top: -6px;" mat-mini-fab color="primary" [disabled]="!selectedFiles" (click)="uploadFiles()">
+                        top: -6px;" mat-mini-fab color="primary" [disabled]="!selectedFiles || check == false"
+                            (click)="uploadFiles()">
                             <mat-icon>upload</mat-icon>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -29,7 +35,7 @@
                 <div class="row">
                     <label class="label col-3 col-form-label ">Họ và Tên</label>
                     <div class="col-9">
-                        <input type="text" pInputText class="form-control" formControlName="fullName">
+                        <input type="text" pInputText class="form-control" formControlName="name">
                     </div>
                 </div>
             </div>
@@ -38,7 +44,23 @@
                     <label class="label col-3 col-form-label">Email</label>
                     <div class="col-9">
                         <input type="text" pInputText class="form-control" formControlName="email">
+                        <div>
+                            <div *ngIf=" f.email.invalid && (f.email.dirty || f.email.touched)">
+                                <div *ngIf="f.email.errors">
+                                    <div *ngIf="f.email.errors.required">
+                                        <small class="text-danger">*Không được bỏ trống</small>
+                                    </div>
+                                    <div *ngIf="f.email.errors.email">
+                                        <small class="text-danger">*Sai định dạng</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="messages === 'Email đã tồn tại'">
+                                <small class="text-danger">*{{messages}}</small>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
@@ -49,6 +71,9 @@
                     <label class="label col-3 col-form-label">Số điện thoại</label>
                     <div class="col-9">
                         <input type="text" pInputText class="form-control" formControlName="phoneNumber">
+                        <div *ngIf="messages === 'Phone đã tồn tại'">
+                            <small class="text-danger">*{{messages}}</small>
+                        </div>
                     </div>
                 </div>
 
@@ -57,7 +82,7 @@
                 <div class="row">
                     <label class="label col-3 col-form-label">Ngày sinh</label>
                     <div class="col-9">
-                        <input type="text" pInputText class="form-control" formControlName="birthDay">
+                        <input type="date" pInputText class="form-control" formControlName="birthDay">
                     </div>
                 </div>
 
@@ -77,14 +102,20 @@
                 <div class="row">
                     <label class="label col-sm-3 col-form-label">Giới tính</label>
                     <div class="col-sm-9">
-                        <input type="text" pInputText class="form-control" formControlName="gender">
+                        <select name="cars" id="cars" formControlName="gender">
+                            <option value="volvo">Nam</option>
+                            <option value="saab">Nữ</option>
+                            <option value="mercedes">Khác</option>
+                        </select>
                     </div>
                 </div>
 
             </div>
         </div>
+        <button mat-button color="primary" (click)="update()"
+            [disabled]="!selectedFiles || check == false|| (!formProfile.valid)">Cập
+            nhật</button>
     </form>
     <ng-template pTemplate="footer">
-        Chân trang trình bày tại đây !
     </ng-template>
 </p-card>

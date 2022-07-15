@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ok } from 'assert';
 import { error } from 'console';
@@ -17,7 +18,7 @@ export class SignupComponent implements OnInit {
   isSubmitted = false;
   isSaving = false;
   public messages = '';
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.initForm();

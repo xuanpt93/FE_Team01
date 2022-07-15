@@ -61,10 +61,10 @@ export class AuthComponent implements OnInit {
             const tokenInfo = localStorage.getItem('token');
             const roleFromToken = tokenInfo.split(":")[2].split(",")[0].replace('"', '').replace('"', '');
             console.log(roleFromToken);
-            if (roleFromToken === "ROLE_ADMIN") {
+            if (roleFromToken === "ROLE_ADMIN" || roleFromToken === "ROLE_JE") {
               this.router.navigate(['/home/']);
             } else {
-              this.router.navigate(['/signup']);
+              this.router.navigate(['/public/jobpublic']);
             }
           }
         }, Response => {

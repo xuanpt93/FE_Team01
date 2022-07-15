@@ -35,22 +35,37 @@ export class DataService {
     }
 
     jobReg: any;
-    setJobReg(element : any ){
+    setJobReg(element: any) {
         return this.jobReg = element
     }
 
-    getJobReg(){
+    getJobReg() {
         return this.jobReg;
     }
 
 
     jobdetails: any;
-    setJobDetailsName(element: any){
+    setJobDetailsName(element: any) {
         return this.jobdetails = element;
     }
-    getJobDetailsName(){
+    getJobDetailsName() {
         return this.jobdetails;
     }
+
+
+    t11: number;
+    sett11(element: number) {
+        return this.t11 = element;
+    }
+    gett11() {
+        return this.t11;
+    }
+    job: any;
+    setJob(element: number) {
+        return this.job = element;
+    }
+    getJob() {
+        return this.job;
 
     addjob: any;
     setAddJobName(element: any){

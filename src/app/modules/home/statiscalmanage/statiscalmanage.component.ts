@@ -9,8 +9,9 @@ import { JobControllerService } from '../../../@core/services/jobcontroller.serv
   styleUrls: ['./statiscalmanage.component.scss']
 })
 export class StatiscalmanageComponent implements OnInit {
-  @ViewChild('lineCanvas') lineCanvas: ElementRef;
   lineChart: any;
+  lineCanvas: any;
+  myChart: any;
   puslishedJob = '';
   jobReg = '';
   jobRegWaitingFor = '';
@@ -18,11 +19,13 @@ export class StatiscalmanageComponent implements OnInit {
   jobReqFailed = '';
   jobRegInterviewing = '';
   jobviews = '';
-  smalldate = '07/12/2022';
-  bigDate = '07/13/2022';
+  smalldate = '01012022';
+  bigDate = '12122022';
   jobduesoon = '';
-  t1 = 0; t2 = 0; t3 = 0; t4 = 0; t5 = 0; t6 = 0; t7 = 0; t8 = 0; t9 = 0; t10 = 0; t11 = 0;
-  month: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12];
+  month: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  data: number[] = new Array();
+  successJobData: number[] = new Array();
+  pieData: number[] = new Array();
   constructor(private jobController: JobControllerService, private dataService: DataService) {
 
   }
@@ -36,16 +39,30 @@ export class StatiscalmanageComponent implements OnInit {
     this.getNumJobRegsWithStatus3();
     this.getNumJobRegsWithStatus4();
     this.countJobDueSoon();
+    this.countViewJob();
     this.getConuntJobNeeds(this.month);
+    this.getConuntSucessJobreg(this.month);
+    this.pieChartMethod();
+    console.log(this.myChart.data);
+
+    this.lineChartMethod();
 
   }
 
   selectedSmallDate(event: any) {
-    this.smalldate = event.target.value;
+    const s = event.target.value;
+    const sx = s.split('-');
+    this.smalldate = sx[2] + sx[1] + sx[0];
+    console.log(this.smalldate);
+    //  this.smalldate = s.
   }
 
   selectedBigDate(event: any) {
-    this.smalldate = event.target.value;
+    const s = event.target.value;
+    const sx = s.split('-');
+    this.bigDate = sx[2] + sx[1] + sx[0];
+    console.log(this.bigDate)
+
     this.getJobpublished();
     this.getNumJobRegs();
     this.getNumJobRegsWithStatus1();
@@ -64,17 +81,28 @@ export class StatiscalmanageComponent implements OnInit {
     );
   }
 
-  getConuntJobNeeds(month: any[]): any {
-    this.jobController.getcountJobNeeds(month[10]).subscribe(
-      Response => {
-        this.t11 = Response;
-        console.log(Response);
-        return this.t11 = Response;
-      }, error => {
-        console.log(error);
-      }
-    );
+  getConuntJobNeeds(month: any[]) {
+    for (let i = 0; i < month.length; i++) {
+      this.jobController.getcountJobNeeds(month[i]).subscribe(
+        Response => {
+          this.data[i] = Response;
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
 
+  }
+  getConuntSucessJobreg(month: any[]) {
+    for (let i = 0; i < month.length; i++) {
+      this.jobController.getcountSuccessJobReg(month[i]).subscribe(
+        Response => {
+          this.successJobData[i] = Response;
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
 
   }
 
@@ -100,9 +128,9 @@ export class StatiscalmanageComponent implements OnInit {
     );
   }
   getNumJobRegsWithStatus2() {
-    this.jobController.getcountJobRegsWithstatusId(2, this.smalldate, this.bigDate).subscribe(
+    this.jobController.getcountJobRegsWithstatusId(5, this.smalldate, this.bigDate).subscribe(
       Response => {
-        this.jobRegSuccess = Response;
+        this.pieData[1] = Response;
       }, error => {
         console.log(error);
       }
@@ -121,7 +149,7 @@ export class StatiscalmanageComponent implements OnInit {
   getNumJobRegsWithStatus4() {
     this.jobController.getcountJobRegsWithstatusId(4, this.smalldate, this.bigDate).subscribe(
       Response => {
-        this.jobReqFailed = Response;
+        this.pieData[0] = Response;
       }, error => {
         console.log(error);
       }
@@ -141,6 +169,7 @@ export class StatiscalmanageComponent implements OnInit {
     this.jobController.getcountViewjob().subscribe(
       Response => {
         this.jobviews = Response;
+        console.log('view');
       }, error => {
         console.log(error);
       }
@@ -157,23 +186,23 @@ export class StatiscalmanageComponent implements OnInit {
   canvas: any;
   ctx: any;
 
-  ngAfterViewInit() {
-    this.pieChartMethod();
-    this.lineChartMethod();
+  // ngAfterViewInit() {
+  //   this.pieChartMethod();
+  //   this.lineChartMethod();
 
-  }
+  // }
 
 
   pieChartMethod() {
     var theHelp = Chart.helpers;
     this.canvas = document.getElementById('myPieChart');
     this.ctx = this.canvas.getContext('2d');
-    let myChart = new Chart(this.ctx, {
+    this.myChart = new Chart(this.ctx, {
       type: 'pie',
       data: {
         datasets: [{
           label: '# of Votes',
-          data: [parseInt(this.jobReqFailed), parseInt(this.jobRegSuccess)],
+          data: this.pieData,
           backgroundColor: [
             'rgb(237, 125, 49)',
             'rgb(68, 115, 197)'
@@ -189,11 +218,11 @@ export class StatiscalmanageComponent implements OnInit {
     );
   }
   lineChartMethod() {
-
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    this.lineCanvas = document.getElementById("lineCanvas");
+    this.lineChart = new Chart(this.lineCanvas, {
       type: 'line',
       data: {
-        labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11'],
+        labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
         datasets: [
           {
             label: 'Số ứng viên cần tuyển',
@@ -214,8 +243,8 @@ export class StatiscalmanageComponent implements OnInit {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [this.t1, this.t2, this.t3, this.t4, this.t5, this.t6, this.t7, this.t8, this.t9, this.t10, this.t11],
-            spanGaps: false,
+            data: this.data,
+            spanGaps: true,
           },
           {
             label: 'Số ứng viên tuyển thành công',
@@ -236,8 +265,8 @@ export class StatiscalmanageComponent implements OnInit {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [66, 59, 89, 81, 56, 55, 33, 10, 50, 50, 12, 15],
-            spanGaps: false,
+            data: this.successJobData,
+            spanGaps: true,
           }
 
         ]

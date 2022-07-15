@@ -41,6 +41,9 @@ export class AddjobeditorComponent implements OnInit {
   addJEConfirm(event: Event) {
     event.preventDefault();
     if (this.formAdd.valid) {
+      const birthday = this.formAdd.value.birthDay.split('-');
+      const birthDaynew = birthday[2] + '-' + birthday[1] + '-' + birthday[0];
+      this.formAdd.patchValue({ birthDay: birthDaynew });
       this.admicontrolService.createNewJE(this.formAdd.value).subscribe(
         Response => {
           if (Response.httpStatus === "OK") {

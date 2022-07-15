@@ -16,6 +16,7 @@ import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbLayoutModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SendotpComponent } from './modules/auth/sendotp/sendotp.component';
 import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
 import { MatTableModule } from '@angular/material/table';
+import { PublicModule } from './modules/public/public.module';
 
 
 const configToast: any = {
@@ -40,7 +42,7 @@ const configToast: any = {
 @NgModule({
   declarations: [AppComponent, SendotpComponent, ResetpwComponent],
   imports: [
-    BrowserModule, MatTableModule,
+    BrowserModule, MatTableModule, PublicModule,
     FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,

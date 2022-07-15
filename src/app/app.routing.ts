@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
   {
+    path: 'public',
+    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
+  },
+  {
     path: 'signup',
     component: SignupComponent,
   },
