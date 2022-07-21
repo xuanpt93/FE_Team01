@@ -8,14 +8,15 @@ import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
 import { UserlistsComponent } from './modules/home/userlists/userlists.component';
 import { JobRegisterComponent } from './modules/home/job-register/job-register.component';
+import { WebSocketService } from './services/WebSocketService.service';
 
 @Component({
   selector: 'ngx-app',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-
   constructor(private analytics: AnalyticsService, private seoService: SeoService) {
+
   }
 
 
@@ -23,4 +24,7 @@ export class AppComponent implements OnInit {
     this.analytics.trackPageViews();
     this.seoService.trackCanonicalChanges();
   }
+
+
+
 }

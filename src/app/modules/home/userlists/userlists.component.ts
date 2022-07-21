@@ -30,10 +30,10 @@ export class UserlistsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'userName', 'gender', 'name', 'phoneNumber', 'email', 'birthDay', 'edit', 'Status'];
   dataSource: [];
   currentPage = 0;
-  pageSize = 1;
+  pageSize = 5;
   isLoading = false;
   totalRow = 0;
-  pageSizeOptions: number[] = [1, 5, 10, 25, 100];
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   obj = { "pageNumber": this.currentPage, "pageSize": this.pageSize };
   searchStr: string;
   sortStr: string;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebSocketService } from '../../services/WebSocketService.service';
 
 @Component({
   selector: 'ngx-public',
@@ -7,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicComponent implements OnInit {
 
-  constructor() { }
-  check = true;
+  public notifications = '';
+
+  constructor(private webSocketService: WebSocketService) {
+
+    let stompClient = this.webSocketService.connect();
+
+    stompClient.connect({}, frame => {
+
+      stompClient.subscribe('/topic/notification', notifications => {
+
+        this.notifications = JSON.parse(notifications.body).content;
+
+      })
+
+    });
+  } check = true;
   name = ''
   display: any;
   role = '';

@@ -28,6 +28,8 @@ import { SendotpComponent } from './modules/auth/sendotp/sendotp.component';
 import { ResetpwComponent } from './modules/auth/resetpw/resetpw.component';
 import { MatTableModule } from '@angular/material/table';
 import { PublicModule } from './modules/public/public.module';
+import { WebSocketService } from './services/WebSocketService.service';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 const configToast: any = {
@@ -42,7 +44,7 @@ const configToast: any = {
 @NgModule({
   declarations: [AppComponent, SendotpComponent, ResetpwComponent],
   imports: [
-    BrowserModule, MatTableModule, PublicModule,
+    BrowserModule, MatTableModule, PublicModule, MatBadgeModule,
     FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,

@@ -14,6 +14,8 @@ import { NbLayoutModule } from '@nebular/theme';
 import { ProfileComponent } from '../home/profile/profile.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangepasswordComponent } from '../home/changepassword/changepassword.component';
+import { WebSocketService } from '../../services/WebSocketService.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -61,6 +63,8 @@ const routes: Routes = [{
     ReactiveFormsModule, MatPaginatorModule, MatListModule, MatDialogModule, NbLayoutModule, MatSnackBarModule
 
 
-  ]
+  ],
+  providers: [WebSocketService],
+
 })
 export class PublicModule { }

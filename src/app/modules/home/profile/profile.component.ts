@@ -153,6 +153,7 @@ export class ProfileComponent implements OnInit {
     this.progressInfos[idx] = { value: 0, fileName: file.name };
 
     if (file) {
+      console.log(file);
       this.uploadService.upload(file, localStorage.getItem('token').split(":")[1].split(',')[0].replace('"', '').replace('"', '')).subscribe(
         (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {

@@ -66,13 +66,15 @@ export class DataService {
     }
     getJob() {
         return this.job;
-
+    }
     addjob: any;
-    setAddJobName(element: any){
+    setAddJobName(element: any) {
         return this.addjob = element;
     }
-    getAddJobName(){
+    getAddJobName() {
         return this.addjob;
     }
+
+
 
 }

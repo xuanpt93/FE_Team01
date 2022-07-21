@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminControllerService } from '../../../../@core/services/adminController.service';
 import { DeletejobEditerComponent } from '../deletejob-editer/deletejob-editer.component';
@@ -14,7 +15,7 @@ import { DialogData } from '../userlists.component';
 export class AddjobeditorComponent implements OnInit {
   formAdd: FormGroup;
   public messages = '';
-  constructor(private admicontrolService: AdminControllerService, private fb: FormBuilder, private router: Router,
+  constructor(private admicontrolService: AdminControllerService, private fb: FormBuilder, private router: Router, private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<DeletejobEditerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,) { }
 
@@ -43,11 +44,14 @@ export class AddjobeditorComponent implements OnInit {
     if (this.formAdd.valid) {
       const birthday = this.formAdd.value.birthDay.split('-');
       const birthDaynew = birthday[2] + '-' + birthday[1] + '-' + birthday[0];
+      console.log(birthDaynew);
       this.formAdd.patchValue({ birthDay: birthDaynew });
       this.admicontrolService.createNewJE(this.formAdd.value).subscribe(
         Response => {
           if (Response.httpStatus === "OK") {
-            alert('Tạo mới thành công!');
+            this._snackBar.open("Tạo mới thành công", "Đồng ý", {
+              duration: 4000
+            });
             this.dialogRef.close();
             this.router.navigate(['/home/userlists']);
           }
@@ -67,4 +71,21 @@ export class AddjobeditorComponent implements OnInit {
     event.preventDefault();
   }
 
+  birthday: any;
+  checkkk: boolean;
+  getbirthday(event: any) {
+    this.birthday = event.target.value;
+    this.checkkk = this.check();
+    console.log(this.checkkk);
+  }
+
+  check(): boolean {
+    if (Date.parse(this.birthday) < new Date().getTime()) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
 }
