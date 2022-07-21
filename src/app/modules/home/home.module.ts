@@ -31,10 +31,13 @@ import { AddJobRegisterComponent } from './job-register/add-job-register/add-job
 import { DeleteComponent } from './job-register/delete/delete.component';
 import { DownloadCvComponent } from './job-register/download-cv/download-cv.component';
 import { ViewReasonsComponent } from './job-register/view-reasons/view-reasons.component';
-import { DeleteComponent } from './job-register/delete/delete.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { AddjobComponent } from './job/addjob/addjob.component';
+import { BookInterviewComponent } from './job-register/job-register-details/book-interview/book-interview.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { ExportPDFComponent } from './job/export-pdf/export-pdf.component';
+import { EditjobComponent } from './job/editjob/editjob.component';
 
 const routes: Routes = [{
   path: '',
@@ -62,7 +65,7 @@ const routes: Routes = [{
     },
     {
       path: 'job_regiser_details',
-      component : JobRegisterDetailsComponent,
+      component: JobRegisterDetailsComponent,
     },
     {
       path: 'jobcomponent',
@@ -81,6 +84,14 @@ const routes: Routes = [{
     {
       path: 'changePassword',
       component: ChangepasswordComponent,
+    },
+    {
+      path: 'exportPDf',
+      component: ExportPDFComponent,
+    },
+    {
+      path: 'editjob',
+      component: EditjobComponent,
     }
 
   ],
@@ -104,14 +115,17 @@ const routes: Routes = [{
     AddJobRegisterComponent,
     DeleteComponent,
     DownloadCvComponent,
-    ViewReasonsComponent
-    ChangepasswordComponent
-    AddjobComponent
+    ViewReasonsComponent,
+    ChangepasswordComponent,
+    AddjobComponent,
+    BookInterviewComponent,
+    ExportPDFComponent,
+    EditjobComponent
   ],
   entryComponents: [DeletejobEditerComponent],
   imports: [
     MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatCardModule, MatCheckboxModule,
-    MatInputModule, MatToolbarModule, MatSnackBarModule,
+    MatInputModule, MatToolbarModule, MatSnackBarModule, MatChipsModule,
     CommonModule,
     RouterModule.forChild(routes),
     ThemeModule,

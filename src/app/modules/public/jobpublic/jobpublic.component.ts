@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { DataService } from '../../../@core/services/data.service';
 import { JobControllerService } from '../../../@core/services/jobcontroller.service';
+import { ServicesService } from '../../../jobservice/services.service';
 import { ShowdetailsjobComponent } from './showdetailsjob/showdetailsjob.component';
 
 @Component({
@@ -12,7 +13,7 @@ import { ShowdetailsjobComponent } from './showdetailsjob/showdetailsjob.compone
 })
 export class JobpublicComponent implements OnInit {
 
-  constructor(private jobcontroller: JobControllerService, private dialog: MatDialog, public dataService: DataService) { }
+  constructor(private jobcontroller: JobControllerService, private dialog: MatDialog, public dataService: DataService, private jobServce: ServicesService) { }
   currentPage = 0;
   pageSize = 4;
   obj = { "pageNumber": this.currentPage, "pageSize": this.pageSize };
@@ -23,7 +24,7 @@ export class JobpublicComponent implements OnInit {
   }
 
   loadData() {
-    this.jobcontroller.getAllJobs(this.obj).subscribe(
+    this.jobServce.getListJobb(this.obj).subscribe(
       Response => {
         this.data = Response;
 

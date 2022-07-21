@@ -19,12 +19,14 @@
     align-content: center;
   }
 
+
+
   nb-user {
     cursor: pointer;
   }
 
   ::ng-deep nb-search button {
-    padding: 0!important;
+    padding: 0 !important;
   }
 
   .header-container {
@@ -37,9 +39,11 @@
       @include nb-rtl(padding-left, 1.25rem);
       text-decoration: none;
       color: nb-theme(text-hint-color);
+
       nb-icon {
         font-size: 1.75rem;
       }
+
     }
 
     .logo {
@@ -56,6 +60,7 @@
     .control-item {
       display: none;
     }
+
     .user-action {
       border: none;
       padding: 0;
@@ -66,5 +71,9 @@
     nb-select {
       display: none;
     }
+  }
+
+  .position-right[_nghost-elo-c138] {
+    right: 10px;
   }
 }

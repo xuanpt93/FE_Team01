@@ -57,7 +57,7 @@ left: 192px;">Cập nhật thông tin nhân viên</b>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>ngày sinh</mat-label>
                 <input matInput placeholder="Ex. 13/05/2001" formControlName="birthDay" type="date"
-                    [(ngModel)]="birthDay">
+                    [(ngModel)]="birthDay" (change)="getbirthday($event)">
             </mat-form-field>
         </div>
         <div class="onaline">
@@ -78,7 +78,8 @@ left: 192px;">Cập nhật thông tin nhân viên</b>
 
 
         <div class="example-button-row">
-            <button mat-stroked-button color="warn" [disabled]="!formUpdate.valid" (click)='addJEConfirm($event)'>Cập
+            <button mat-stroked-button color="warn" [disabled]="!formUpdate.valid || this.checkkk !== true"
+                (click)='addJEConfirm($event)'>Cập
                 nhật</button>
         </div>
         <div class="example-button-row">

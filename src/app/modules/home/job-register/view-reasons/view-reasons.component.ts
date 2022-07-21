@@ -8,14 +8,12 @@ import { JobRegisterServiceService } from '../../../../services/job-register-ser
 })
 export class ViewReasonsComponent implements OnInit {
 
-  constructor(public jobRegisterService : JobRegisterServiceService) { }
-  statusJobRegister : any;
-  reason : any;
+  constructor(public jobRegisterService: JobRegisterServiceService) { }
+
+  reason: any;
   ngOnInit(): void {
-    console.log(this.jobRegisterService.getReasons());
-    console.log(this.jobRegisterService.getReasonss());
-    this.statusJobRegister = this.jobRegisterService.getReasons().statusJobRegister; 
-    this.reason = this.jobRegisterService.getReasonss().statusJobRegister.reason;
+
+    this.reason = this.jobRegisterService.getReasons();
   }
 
 }

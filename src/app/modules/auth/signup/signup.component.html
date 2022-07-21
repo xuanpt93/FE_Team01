@@ -122,11 +122,12 @@
                 <div class="form-group-content">
                     <label for="pass"><i class="fa fa-lock" id="repasslabel"></i> Birthday</label>
                     <input id="brithday" type="date" class="cm-input" data-date-format="DD-MMMM-YYYY"
-                        formControlName="birthDay">
+                        (change)="getbirthday($event)" formControlName="birthDay">
                 </div>
             </div>
 
-            <button type="submit" [disabled]="!formSignup.valid" class="btn btn-primary" (click)="signup()" style="
+            <button type="submit" [disabled]="!formSignup.valid || this.checkkk !== true " class="btn btn-primary"
+                (click)="signup()" style="
             left: 136px;
             position: relative;">Sign
                 up</button>

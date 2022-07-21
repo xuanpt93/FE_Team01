@@ -67,4 +67,9 @@ export class JobControllerService {
     }
 
 
+
+    public UpdateStatus(form: any): Observable<any> {
+        return this.http.put(`${this.baseUrl}job/updateStatus`, form);
+    }
+
 }

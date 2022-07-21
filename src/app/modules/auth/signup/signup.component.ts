@@ -73,5 +73,21 @@ export class SignupComponent implements OnInit {
         });
     }
   }
+  birthday: any;
+  checkkk: boolean;
+  getbirthday(event: any) {
+    this.birthday = event.target.value;
+    this.checkkk = this.check();
+    console.log(this.checkkk);
+  }
 
+  check(): boolean {
+    if (Date.parse(this.birthday) < new Date().getTime()) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
 }

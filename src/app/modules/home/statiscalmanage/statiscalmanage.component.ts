@@ -43,8 +43,6 @@ export class StatiscalmanageComponent implements OnInit {
     this.getConuntJobNeeds(this.month);
     this.getConuntSucessJobreg(this.month);
     this.pieChartMethod();
-    console.log(this.myChart.data);
-
     this.lineChartMethod();
 
   }
@@ -147,7 +145,7 @@ export class StatiscalmanageComponent implements OnInit {
   }
 
   getNumJobRegsWithStatus4() {
-    this.jobController.getcountJobRegsWithstatusId(4, this.smalldate, this.bigDate).subscribe(
+    this.jobController.getcountJobRegsWithstatusId(6, this.smalldate, this.bigDate).subscribe(
       Response => {
         this.pieData[0] = Response;
       }, error => {

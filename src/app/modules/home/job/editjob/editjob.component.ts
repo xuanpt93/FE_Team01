@@ -1,21 +1,23 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AdminControllerService } from '../../../../@core/services/adminController.service';
 import { ServicesService } from '../../../../jobservice/services.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { DataService } from '../../../../@core/services/data.service';
+import { Validator } from '../../../../@core/services/validators';
 
 export interface Skill {
   name: string;
 }
 @Component({
-  selector: 'ngx-addjob',
-  templateUrl: './addjob.component.html',
-  styleUrls: ['./addjob.component.scss']
+  selector: 'ngx-editjob',
+  templateUrl: './editjob.component.html',
+  styleUrls: ['./editjob.component.scss']
 })
-export class AddjobComponent implements OnInit {
+export class EditjobComponent implements OnInit {
+
   formAdd: FormGroup;
   public messages = '';
   jobPositions: any;
@@ -31,32 +33,34 @@ export class AddjobComponent implements OnInit {
   users: any
   user: any;
   obj = { "pageNumber": 0, "pageSize": 100 };
-
+  job: any
   constructor(
     private admicontrolService: AdminControllerService,
     private fb: FormBuilder,
     private router: Router,
-    private jobservice: ServicesService
+    private jobservice: ServicesService, private dataService: DataService
   ) { }
 
   ngOnInit(): void {
     this.getJobPosition();
     this.loadUser();
     this.initForm();
+    this.job = this.dataService.getJob();
+
   }
 
   initForm() {
     this.formAdd = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(150)]],
       jobPosition: ['', Validators.required],
-      numberExperience: ['', Validators.required],
+      numberExperience: ['', [Validators.required, Validator.cannotLessorEqualzero]],
       workingForm: ['', [Validators.required]],
       addressWork: ['', Validators.required],
       academicLevel: ['', Validators.required],
       qtyPerson: ['', [Validators.required, Validators.pattern('^[0-9]{1,3}$')]],
       rank: ['', Validators.required],
       dueDate: ['', Validators.required],
-      skills: ['', Validators.required],
+      skills: ['', [Validators.required, Validator.LessThanToday]],
       description: ['', [Validators.required, Validators.maxLength(2000)]],
       benefits: ['', [Validators.required, Validators.maxLength(2000)]],
       jobRequirement: ['', [Validators.required, Validators.maxLength(2000)]],
@@ -160,6 +164,4 @@ export class AddjobComponent implements OnInit {
       this.statusJobs = data;
     });
   }
-
-
 }

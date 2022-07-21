@@ -37,7 +37,7 @@ table {
     max-width: 800px;
     width: 100%;
     position: relative;
-    top: 76px;
+    top: 19px;
 }
 
 .example-full-width {
@@ -49,4 +49,8 @@ table {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.example-full-width-fix {
+    width: 33%;
 }
